@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="es">
+<script>document.documentElement.classList.add('js');</script>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autodiagnóstico Janus — Descubrí qué tan disperso está tu seguimiento comercial</title>
+<meta name="description" content="En 3 minutos, descubrí qué tan cerca estás de perder el control de tu red de contactos, y recibí un diagnóstico personalizado con IA en tu correo.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0A0A0B">
+<link rel="canonical" href="https://diagnostico.janus.money/">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/favicon.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://diagnostico.janus.money/">
+<meta property="og:title" content="Autodiagnóstico Janus">
+<meta property="og:description" content="En 3 minutos, descubrí qué tan disperso está tu seguimiento comercial — y qué te está costando no tener un sistema.">
+<meta property="og:locale" content="es_CR">
+<meta property="og:site_name" content="Janus">
+<meta property="og:image" content="https://diagnostico.janus.money/assets/imagen-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Autodiagnóstico Janus">
+<meta name="twitter:description" content="En 3 minutos, descubrí qué tan disperso está tu seguimiento comercial.">
+<meta name="twitter:image" content="https://diagnostico.janus.money/assets/imagen-og.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --negro:#0A0A0B;
+  --negro-card:#131315;
+  --negro-card-2:#0F0F11;
+  --blanco:#FAFAF9;
+  --gris-700:#ACACB0;
+  --gris-500:#7C7C80;
+  --borde:#232326;
+  --borde-fuerte:#333336;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  background:var(--negro);color:var(--blanco);font-family:'Manrope',sans-serif;
+  line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh;font-size:17px;
+}
+.serif{font-family:'Fraunces',serif;}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+
+.shell{max-width:680px;margin:0 auto;padding:3rem 1.75rem 5rem;min-height:100vh;display:flex;flex-direction:column;}
+@media(min-width:640px){.shell{padding:4.5rem 2.5rem 6rem;}}
+
+/* HEADER */
+.brand{display:flex;align-items:center;gap:0.6rem;margin-bottom:2.5rem;}
+.brand svg{width:24px;height:24px;}
+.brand span{font-weight:700;font-size:16px;letter-spacing:0.04em;}
+
+/* PROGRESS */
+.progress-wrap{display:none;align-items:center;gap:1rem;margin-bottom:2.5rem;}
+.progress-wrap.show{display:flex;}
+.progress-track{flex:1;height:3px;background:var(--borde);border-radius:4px;overflow:hidden;}
+.progress-fill{height:100%;width:0%;background:var(--blanco);transition:width .4s ease;}
+.progress-label{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gris-500);white-space:nowrap;}
+
+/* SCREENS */
+.screen{display:none;flex:1;flex-direction:column;}
+.screen.active{display:flex;animation:fadein .5s ease;}
+@keyframes fadein{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* INTRO */
+.eyebrow{font-size:13px;color:var(--gris-500);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.6rem;}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--blanco);box-shadow:0 0 8px 2px rgba(250,250,249,.4);}
+.intro h1{font-weight:700;font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.22;margin-bottom:1.3rem;max-width:20ch;letter-spacing:-0.01em;}
+.intro h1 em{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--gris-700);}
+.intro p{color:var(--gris-700);font-size:1.1rem;max-width:52ch;margin-bottom:1.3rem;}
+.meta-line{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--gris-500);margin-bottom:2.4rem;}
+.intro-list{margin-bottom:2.6rem;}
+.intro-list li{list-style:none;display:flex;gap:0.7rem;padding:0.7rem 0;color:var(--gris-700);font-size:1rem;border-top:1px solid var(--borde);}
+.intro-list li:first-child{border-top:none;}
+.intro-list li .n{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gris-500);flex-shrink:0;padding-top:2px;}
+
+/* BUTTONS */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;
+  background:var(--blanco);color:var(--negro);font-weight:700;font-size:15px;
+  padding:1rem 1.7rem;border-radius:4px;text-decoration:none;border:1px solid var(--blanco);
+  cursor:pointer;transition:transform .15s ease;font-family:'Manrope',sans-serif;
+}
+.btn:hover{transform:translateY(-1px);}
+.btn:active{transform:scale(0.98);}
+.btn-block{width:100%;}
+.btn-secondary{background:transparent;color:var(--gris-700);border:1px solid var(--borde-fuerte);font-weight:600;font-size:14px;padding:0.8rem 1.3rem;}
+.btn-secondary:hover{border-color:var(--gris-700);color:var(--blanco);background:transparent;transform:none;}
+.btn[disabled]{opacity:0.4;pointer-events:none;}
+
+/* QUESTION SCREEN */
+.q-cat{font-size:12.5px;color:var(--gris-500);letter-spacing:0.1em;margin-bottom:0.9rem;text-transform:uppercase;}
+.q-title{font-weight:700;font-size:clamp(1.4rem,4vw,1.9rem);line-height:1.35;margin-bottom:2.2rem;max-width:28ch;letter-spacing:-0.01em;}
+.options{display:flex;flex-direction:column;gap:0.8rem;}
+.opt{
+  text-align:left;background:var(--negro-card);border:1px solid var(--borde);border-radius:6px;
+  padding:1.1rem 1.3rem;color:var(--blanco);font-size:1rem;cursor:pointer;
+  transition:border-color .15s ease, background .15s ease, transform .1s ease;font-family:'Manrope',sans-serif;
+}
+.opt:hover{border-color:var(--gris-500);background:var(--negro-card-2);}
+.opt.selected{border-color:var(--blanco);background:var(--negro-card-2);}
+.opt:active{transform:scale(0.99);}
+.q-nav{margin-top:2rem;}
+
+/* CAPTURE */
+.field{margin-bottom:1.3rem;}
+.field label{display:block;font-size:13px;color:var(--gris-700);margin-bottom:0.5rem;}
+.field input, .field select{
+  width:100%;background:var(--negro-card);border:1px solid var(--borde);border-radius:5px;
+  padding:0.85rem 1rem;color:var(--blanco);font-size:1rem;font-family:'Manrope',sans-serif;
+}
+.field input:focus, .field select:focus{outline:none;border-color:var(--gris-500);}
+.field input::placeholder{color:var(--gris-500);}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media(max-width:480px){.field-row{grid-template-columns:1fr;}}
+.field-error{font-size:12px;color:#c26262;margin-top:0.4rem;display:none;}
+.field.invalid input{border-color:#c26262;}
+.field.invalid .field-error{display:block;}
+.capture-note{font-size:12.5px;color:var(--gris-500);margin-top:1.4rem;}
+
+/* LOADING */
+.loading-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;text-align:center;padding:3rem 0;}
+.loading-spinner{width:34px;height:34px;border-radius:50%;border:2px solid var(--borde-fuerte);border-top-color:var(--blanco);animation:spin 0.9s linear infinite;margin-bottom:1.75rem;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loading-title{font-weight:700;font-size:1.25rem;margin-bottom:0.6rem;}
+.loading-sub{color:var(--gris-700);font-size:0.98rem;max-width:38ch;}
+
+/* RESULTS */
+.result-zone{font-size:13px;color:var(--gris-500);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.6rem;}
+.result-title{font-weight:700;font-size:clamp(1.7rem,4.6vw,2.3rem);line-height:1.25;margin-bottom:1.4rem;letter-spacing:-0.01em;}
+.result-title em{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--gris-700);}
+.diag-preview{background:var(--negro-card);border:1px solid var(--borde-fuerte);border-radius:6px;padding:2rem 2rem 1.75rem;margin-bottom:1.8rem;}
+.diag-track{position:relative;height:1px;background:linear-gradient(90deg,var(--gris-500),var(--blanco),var(--gris-500));margin:1.5rem 0;}
+.diag-marker{position:absolute;top:50%;width:9px;height:9px;border-radius:50%;background:var(--blanco);box-shadow:0 0 0 5px var(--negro-card),0 0 16px 3px rgba(250,250,249,.5);left:0;transform:translate(-50%,-50%);transition:left 1s cubic-bezier(.2,.8,.2,1);}
+.diag-labels{display:flex;justify-content:space-between;font-size:12px;color:var(--gris-500);letter-spacing:0.02em;}
+.diag-score{margin-top:1.3rem;font-size:0.95rem;color:var(--gris-700);}
+.diag-score strong{color:var(--blanco);}
+.result-p{color:var(--gris-700);font-size:1.05rem;margin-bottom:1.8rem;max-width:56ch;}
+.focus-box{background:var(--negro-card);border-left:2px solid var(--blanco);border-radius:0 4px 4px 0;padding:1.6rem 1.8rem;margin-bottom:2rem;}
+.focus-box h3{font-size:12.5px;color:var(--gris-500);letter-spacing:0.1em;margin-bottom:1rem;}
+.focus-item{display:flex;gap:0.8rem;padding:0.7rem 0;font-size:0.98rem;color:var(--blanco);border-top:1px solid var(--borde);}
+.focus-item:first-of-type{border-top:none;}
+.focus-item .num{font-family:'JetBrains Mono',monospace;color:var(--gris-500);flex-shrink:0;}
+.focus-item .txt strong{display:block;margin-bottom:0.2rem;}
+.focus-item .txt span{color:var(--gris-700);font-size:0.92rem;}
+.email-note{display:flex;gap:0.7rem;align-items:flex-start;background:var(--negro-card-2);border:1px solid var(--borde);border-radius:6px;padding:1.1rem 1.3rem;margin-bottom:1.8rem;font-size:0.92rem;color:var(--gris-700);}
+.email-note strong{color:var(--blanco);}
+.result-actions{display:flex;flex-direction:column;gap:0.9rem;margin-top:0.5rem;}
+.result-actions .btn{width:100%;}
+.restart-link{text-align:center;font-size:13px;color:var(--gris-500);margin-top:1.8rem;text-decoration:underline;cursor:pointer;}
+
+footer.note{margin-top:auto;padding-top:3rem;font-size:12px;color:var(--gris-500);}
+footer.note a{color:var(--gris-700);text-decoration:underline;}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <div class="brand">
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 8H24V40H10" stroke="#FAFAF9" stroke-width="1.6" fill="none"/>
+      <path d="M38 8H24V40H38" stroke="#FAFAF9" stroke-width="1.6" fill="none" opacity="0.35"/>
+      <circle cx="24" cy="24" r="2.5" fill="#FAFAF9"/>
+    </svg>
+    <span>JANUS</span>
+  </div>
+
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">1 / 8</div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="screen active" id="screen-intro">
+    <div class="eyebrow"><span class="dot"></span> Autodiagnóstico Janus</div>
+    <div class="intro">
+      <h1>Descubrí qué tan cerca estás de <em>perder el control</em> de tu red.</h1>
+      <p>Respondé 8 preguntas breves sobre cómo gestionás hoy tus contactos y tu proceso comercial. Vas a recibir un análisis personalizado, generado con IA a partir de tus respuestas — directo a tu correo.</p>
+      <p class="meta-line">3 minutos · Análisis personalizado por correo · Sin compromiso</p>
+      <ul class="intro-list">
+        <li><span class="n">01</span> Respondé con tu situación real, no con la ideal.</li>
+        <li><span class="n">02</span> No hay respuestas correctas — solo un punto de partida honesto.</li>
+        <li><span class="n">03</span> Al final, decidís si querés conversar sobre tu resultado. Sin presión.</li>
+      </ul>
+      <button class="btn" id="startBtn">Comenzar mi autodiagnóstico</button>
+    </div>
+  </section>
+
+  <!-- QUESTIONS (generadas por JS) -->
+  <section class="screen" id="screen-question">
+    <div class="q-cat" id="qCat">Categoría</div>
+    <h2 class="q-title" id="qTitle">Pregunta</h2>
+    <div class="options" id="qOptions"></div>
+    <div class="q-nav">
+      <button class="btn-secondary" id="backBtn" style="display:none;">← Anterior</button>
+    </div>
+  </section>
+
+  <!-- CAPTURE -->
+  <section class="screen" id="screen-capture">
+    <div class="eyebrow"><span class="dot"></span> Último paso</div>
+    <h2 class="q-title" style="max-width:30ch;">¿A quién le preparamos el informe?</h2>
+    <p style="color:var(--gris-700);margin-bottom:1.8rem;max-width:50ch;font-size:1.05rem;">Con esto generamos tu análisis personalizado y te lo enviamos por correo.</p>
+
+    <div class="field" id="field-fName">
+      <label for="fName">Nombre y apellido</label>
+      <input type="text" id="fName" placeholder="Nombre y apellido" autocomplete="name">
+      <div class="field-error">Ingresá tu nombre completo.</div>
+    </div>
+    <div class="field-row">
+      <div class="field" id="field-fEmpresa">
+        <label for="fEmpresa">Empresa</label>
+        <input type="text" id="fEmpresa" placeholder="Nombre de tu empresa" autocomplete="organization">
+        <div class="field-error">Ingresá el nombre de tu empresa.</div>
+      </div>
+      <div class="field" id="field-fPuesto">
+        <label for="fPuesto">Puesto</label>
+        <input type="text" id="fPuesto" placeholder="Ej. Consultor independiente" autocomplete="organization-title">
+        <div class="field-error">Ingresá tu puesto.</div>
+      </div>
+    </div>
+    <div class="field" id="field-fCorreo">
+      <label for="fCorreo">Correo</label>
+      <input type="email" id="fCorreo" placeholder="tu@correo.com" autocomplete="email">
+      <div class="field-error">Ingresá un correo válido.</div>
+    </div>
+    <div class="field" id="field-fWhatsapp">
+      <label for="fWhatsapp">WhatsApp</label>
+      <input type="tel" id="fWhatsapp" placeholder="+506 8888-8888" autocomplete="tel">
+      <div class="field-error">Ingresá tu número de WhatsApp.</div>
+    </div>
+
+    <button class="btn btn-block" id="seeResultBtn">Generar mi diagnóstico</button>
+    <p class="capture-note">Tus respuestas son confidenciales y no se comparten con nadie fuera de Janus.</p>
+  </section>
+
+  <!-- LOADING -->
+  <section class="screen" id="screen-loading">
+    <div class="loading-wrap">
+      <div class="loading-spinner"></div>
+      <div class="loading-title">Generando tu diagnóstico...</div>
+      <div class="loading-sub">Estamos analizando tus respuestas para armar un informe a tu medida. Esto toma unos segundos.</div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="screen" id="screen-result">
+    <div class="result-zone" id="resZoneLabel">Tu resultado</div>
+    <h2 class="result-title" id="resTitle">Título del resultado</h2>
+
+    <div class="diag-preview">
+      <div class="diag-track">
+        <div class="diag-marker" id="resMarker"></div>
+      </div>
+      <div class="diag-labels"><span>Disperso</span><span>En transición</span><span>Con control</span></div>
+      <p class="diag-score" id="resScoreText">Puntaje</p>
+    </div>
+
+    <p class="result-p" id="resParagraph">Párrafo de resultado.</p>
+
+    <div class="focus-box">
+      <h3>TUS FOCOS DE ATENCIÓN PRIORITARIOS</h3>
+      <div id="resFocusList"></div>
+    </div>
+
+    <div class="email-note" id="emailNote">
+      <span>📩</span>
+      <div><strong>Ya enviamos tu informe completo</strong> a tu correo, con un análisis más detallado generado especialmente para tu situación.</div>
+    </div>
+
+    <div class="result-actions">
+      <a href="#" class="btn" id="waResultBtn" target="_blank" rel="noopener">Conversar sobre mi resultado por WhatsApp</a>
+      <a href="https://janus.money/" class="btn-secondary" style="text-align:center;">Volver al sitio de Janus</a>
+    </div>
+    <div class="restart-link" id="restartBtn">Hacer el autodiagnóstico de nuevo</div>
+  </section>
+
+  <footer class="note">Janus · Construido por <a href="https://nxtlvl.today/" target="_blank" rel="noopener">nxt LVL</a> · Herramienta de autodiagnóstico v2</footer>
+</div>
+
+<script>
+(function(){
+
+  var QUESTIONS = [
+    {
+      cat: "Contactos",
+      q: "¿Qué tan fácil es hoy encontrar la información de un contacto que conociste hace tres meses?",
+      opts: [
+        {t:"Tendría que buscar entre tarjetas, WhatsApp y notas sueltas", s:0},
+        {t:"Lo tengo en una lista o Excel que actualizo cuando puedo", s:1},
+        {t:"Lo tengo centralizado, pero me toma tiempo revisarlo", s:2},
+        {t:"Lo encuentro al instante, con todo el contexto", s:3}
+      ]
+    },
+    {
+      cat: "Seguimiento",
+      q: "¿Qué tan seguido se te enfría una oportunidad por falta de seguimiento a tiempo?",
+      opts: [
+        {t:"Constantemente — pierdo la cuenta de a quién le debo escribir", s:0},
+        {t:"A veces, cuando ando muy ocupado", s:1},
+        {t:"Rara vez, trato de estar encima", s:2},
+        {t:"Nunca — tengo un sistema que me avisa antes", s:3}
+      ]
+    },
+    {
+      cat: "Forecast",
+      q: "¿Podés decir con certeza cuánto vas a facturar el próximo trimestre?",
+      opts: [
+        {t:"No tengo idea, es pura intuición", s:0},
+        {t:"Tengo una idea general, nada preciso", s:1},
+        {t:"Puedo estimarlo con algo de esfuerzo", s:2},
+        {t:"Sí, con una cifra real y actualizada", s:3}
+      ]
+    },
+    {
+      cat: "Pipeline",
+      q: "¿Qué tan claro tenés en qué etapa está cada oportunidad activa ahora mismo?",
+      opts: [
+        {t:"No llevo un registro de etapas", s:0},
+        {t:"Lo tengo en la cabeza, sin escribirlo en ningún lado", s:1},
+        {t:"Lo anoto, pero no siempre está actualizado", s:2},
+        {t:"Tengo visibilidad completa y actualizada", s:3}
+      ]
+    },
+    {
+      cat: "Tiempo administrativo",
+      q: "¿Cuánto tiempo a la semana pasás organizando contactos y seguimientos a mano?",
+      opts: [
+        {t:"Varias horas, y aun así se me escapan cosas", s:0},
+        {t:"Un par de horas, entre WhatsApp y notas", s:1},
+        {t:"Poco tiempo, ya tengo cierto orden", s:2},
+        {t:"Casi nada, es prácticamente automático", s:3}
+      ]
+    },
+    {
+      cat: "Referidos",
+      q: "¿Sabés con certeza quién te ha dado los mejores referidos este año?",
+      opts: [
+        {t:"No tengo forma de saberlo", s:0},
+        {t:"Tengo una idea vaga", s:1},
+        {t:"Podría averiguarlo revisando mis notas", s:2},
+        {t:"Sí, tengo esa visibilidad clara", s:3}
+      ]
+    },
+    {
+      cat: "Contratos recurrentes",
+      q: "Si tenés clientes con contratos o servicios recurrentes, ¿sabés cuándo vence cada uno?",
+      opts: [
+        {t:"No lo sé hasta que el cliente pregunta", s:0},
+        {t:"Tengo una idea aproximada", s:1},
+        {t:"Lo reviso manualmente de vez en cuando", s:2},
+        {t:"Tengo alertas claras de cada vencimiento", s:3}
+      ]
+    },
+    {
+      cat: "Continuidad",
+      q: "Si dejaras de revisar tu WhatsApp y tus notas por dos semanas, ¿tu seguimiento comercial seguiría funcionando?",
+      opts: [
+        {t:"No — todo depende de que yo esté encima", s:0},
+        {t:"Con tropiezos, probablemente", s:1},
+        {t:"Bastante bien, con alguna excepción", s:2},
+        {t:"Sí, sin ningún problema", s:3}
+      ]
+    }
+  ];
+
+  var FOCUS_SUGGESTIONS = {
+    "Contactos": "Centralizar tus contactos en un solo lugar — no repartidos entre tarjetas y WhatsApp.",
+    "Seguimiento": "Un sistema de alertas que te avise antes de que una oportunidad se enfríe.",
+    "Forecast": "Ver tu proyección de facturación mes a mes, no adivinarla.",
+    "Pipeline": "Un tablero visual que te muestre en qué etapa está cada oportunidad.",
+    "Tiempo administrativo": "Automatizar el registro de contactos con escaneo de tarjetas por IA.",
+    "Referidos": "Un ranking automático de quién te refiere más negocio.",
+    "Contratos recurrentes": "Alertas de vencimiento para no perder ingreso recurrente por descuido.",
+    "Continuidad": "Un sistema que sostenga tu seguimiento aunque vos no estés encima todo el tiempo."
+  };
+
+  var answers = new Array(QUESTIONS.length).fill(null);
+  var currentQ = 0;
+
+  var screenIntro = document.getElementById('screen-intro');
+  var screenQuestion = document.getElementById('screen-question');
+  var screenCapture = document.getElementById('screen-capture');
+  var screenLoading = document.getElementById('screen-loading');
+  var screenResult = document.getElementById('screen-result');
+  var progressWrap = document.getElementById('progressWrap');
+  var progressFill = document.getElementById('progressFill');
+  var progressLabel = document.getElementById('progressLabel');
+
+  function showScreen(el){
+    [screenIntro, screenQuestion, screenCapture, screenLoading, screenResult].forEach(function(s){ s.classList.remove('active'); });
+    el.classList.add('active');
+    window.scrollTo(0,0);
+  }
+
+  document.getElementById('startBtn').addEventListener('click', function(){
+    currentQ = 0;
+    progressWrap.classList.add('show');
+    renderQuestion();
+    showScreen(screenQuestion);
+  });
+
+  function renderQuestion(){
+    var q = QUESTIONS[currentQ];
+    document.getElementById('qCat').textContent = q.cat;
+    document.getElementById('qTitle').textContent = q.q;
+    progressFill.style.width = ((currentQ) / QUESTIONS.length * 100) + '%';
+    progressLabel.textContent = (currentQ+1) + ' / ' + QUESTIONS.length;
+
+    var wrap = document.getElementById('qOptions');
+    wrap.innerHTML = '';
+    q.opts.forEach(function(opt, i){
+      var btn = document.createElement('button');
+      btn.className = 'opt';
+      btn.type = 'button';
+      btn.textContent = opt.t;
+      if(answers[currentQ] === i) btn.classList.add('selected');
+      btn.addEventListener('click', function(){
+        answers[currentQ] = i;
+        setTimeout(function(){
+          if(currentQ < QUESTIONS.length - 1){
+            currentQ++;
+            renderQuestion();
+          } else {
+            progressFill.style.width = '100%';
+            progressLabel.textContent = QUESTIONS.length + ' / ' + QUESTIONS.length;
+            progressWrap.classList.remove('show');
+            showScreen(screenCapture);
+          }
+        }, 220);
+      });
+      wrap.appendChild(btn);
+    });
+
+    document.getElementById('backBtn').style.display = currentQ > 0 ? 'inline-flex' : 'none';
+  }
+
+  document.getElementById('backBtn').addEventListener('click', function(){
+    if(currentQ > 0){ currentQ--; renderQuestion(); }
+  });
+
+  function validateCapture(){
+    var fields = [
+      {id:'fName', test: function(v){ return v.trim().length > 2; }},
+      {id:'fEmpresa', test: function(v){ return v.trim().length > 1; }},
+      {id:'fPuesto', test: function(v){ return v.trim().length > 1; }},
+      {id:'fCorreo', test: function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }},
+      {id:'fWhatsapp', test: function(v){ return v.trim().replace(/\D/g,'').length >= 8; }}
+    ];
+    var ok = true;
+    fields.forEach(function(f){
+      var input = document.getElementById(f.id);
+      var wrap = document.getElementById('field-' + f.id);
+      if(!f.test(input.value)){
+        wrap.classList.add('invalid');
+        ok = false;
+      } else {
+        wrap.classList.remove('invalid');
+      }
+    });
+    return ok;
+  }
+
+  document.getElementById('seeResultBtn').addEventListener('click', function(){
+    if(!validateCapture()) return;
+
+    var contact = {
+      nombre: document.getElementById('fName').value.trim(),
+      empresa: document.getElementById('fEmpresa').value.trim(),
+      puesto: document.getElementById('fPuesto').value.trim(),
+      correo: document.getElementById('fCorreo').value.trim(),
+      whatsapp: document.getElementById('fWhatsapp').value.trim()
+    };
+
+    var totalScore = 0;
+    var catScores = [];
+    var respuestas = [];
+    answers.forEach(function(a, i){
+      var s = a === null ? 0 : QUESTIONS[i].opts[a].s;
+      totalScore += s;
+      catScores.push({cat: QUESTIONS[i].cat, score: s});
+      respuestas.push({
+        categoria: QUESTIONS[i].cat,
+        pregunta: QUESTIONS[i].q,
+        respuesta: a === null ? '(sin responder)' : QUESTIONS[i].opts[a].t,
+        puntaje: s
+      });
+    });
+    var maxScore = QUESTIONS.length * 3;
+    var pct = Math.round((totalScore / maxScore) * 100);
+
+    var zone, zoneLabel, title, paragraph;
+    if(pct < 34){
+      zone = 'disperso'; zoneLabel = 'Zona: Disperso';
+      title = 'Tu red de contactos está operando con un nivel alto de dispersión.';
+      paragraph = 'Gran parte de tu seguimiento depende hoy de la memoria y no de un sistema. No es un juicio — es la fotografía del momento en que se encuentran muchos consultores independientes antes de ordenar esta parte del negocio.';
+    } else if(pct < 67){
+      zone = 'transicion'; zoneLabel = 'Zona: En transición';
+      title = 'Ya dejaste atrás el desorden total, pero todavía hay puntos ciegos.';
+      paragraph = 'Hay partes de tu proceso comercial que ya están razonablemente bajo control, y otras que todavía dependen de que te acordés. Si tu red sigue creciendo al ritmo actual, esos puntos ciegos se vuelven más caros de resolver.';
+    } else {
+      zone = 'control'; zoneLabel = 'Zona: Con control';
+      title = 'Tenés un nivel de control superior al de la mayoría de los consultores independientes.';
+      paragraph = 'El siguiente paso ya no es urgente — es estratégico: sostener ese orden para que tu negocio pueda crecer sin que el seguimiento se vuelva un cuello de botella.';
+    }
+
+    catScores.sort(function(a,b){ return a.score - b.score; });
+    var focusCats = [];
+    for(var i=0;i<catScores.length && focusCats.length<3;i++){
+      if(catScores[i].score <= 1){
+        focusCats.push(catScores[i].cat);
+      }
+    }
+
+    // Mostrar el resultado inmediato en pantalla (no depende del backend)
+    document.getElementById('resZoneLabel').textContent = zoneLabel;
+    document.getElementById('resTitle').innerHTML = title;
+    document.getElementById('resParagraph').textContent = paragraph;
+    document.getElementById('resScoreText').innerHTML = 'Puntaje: <strong>' + totalScore + ' / ' + maxScore + '</strong> — ' + pct + '%';
+
+    var marker = document.getElementById('resMarker');
+    marker.style.left = '0%';
+    setTimeout(function(){ marker.style.left = pct + '%'; }, 150);
+
+    var focusList = document.getElementById('resFocusList');
+    focusList.innerHTML = '';
+    if(focusCats.length === 0){
+      var okDiv = document.createElement('div');
+      okDiv.className = 'focus-item';
+      okDiv.style.borderTop = 'none';
+      okDiv.innerHTML = '<div class="txt"><strong>No encontramos focos críticos en tus respuestas.</strong><span>Ya estás manejando esta parte del negocio con solidez. El siguiente paso es mantenerlo así mientras creces.</span></div>';
+      focusList.appendChild(okDiv);
+    } else {
+      focusCats.forEach(function(cat, i){
+        var div = document.createElement('div');
+        div.className = 'focus-item';
+        div.innerHTML = '<span class="num">0' + (i+1) + '</span><div class="txt"><strong>' + cat + '</strong><span>' + (FOCUS_SUGGESTIONS[cat] || '') + '</span></div>';
+        focusList.appendChild(div);
+      });
+    }
+
+    var focusText = focusCats.length ? focusCats.join(', ') : 'Sin focos críticos identificados';
+    var waText = 'Hola, soy ' + contact.nombre + ' (' + contact.puesto + ' en ' + contact.empresa + ').\n\n' +
+      'Acabo de completar el autodiagnóstico de Janus.\n\n' +
+      'Resultado: ' + zoneLabel + ' (' + totalScore + '/' + maxScore + ')\n' +
+      'Áreas de mayor atención: ' + focusText + '\n\n' +
+      'Me gustaría conversar sobre mi resultado.';
+    document.getElementById('waResultBtn').href = 'https://wa.me/50688813232?text=' + encodeURIComponent(waText);
+
+    showScreen(screenResult);
+
+    // Disparar en segundo plano la generación del informe con IA + envío de correos.
+    // Si esto falla, el resultado en pantalla ya se mostró igual — no depende de esto.
+    var emailNote = document.getElementById('emailNote');
+    emailNote.querySelector('div').innerHTML = '<strong>Estamos generando tu informe completo</strong> — te va a llegar por correo en los próximos minutos.';
+
+    fetch('/api/diagnostico', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        contacto: contact,
+        respuestas: respuestas,
+        puntajeTotal: totalScore,
+        puntajeMax: maxScore,
+        porcentaje: pct,
+        zona: zoneLabel,
+        focos: focusCats
+      })
+    }).then(function(res){
+      if(res.ok){
+        emailNote.querySelector('div').innerHTML = '<strong>Ya enviamos tu informe completo</strong> a ' + contact.correo + ', con un análisis más detallado generado especialmente para tu situación.';
+      } else {
+        emailNote.querySelector('div').innerHTML = 'Tu resultado ya está listo arriba. Tuvimos un problema enviando el correo — si no te llega en unos minutos, escribinos por WhatsApp.';
+      }
+    }).catch(function(){
+      emailNote.querySelector('div').innerHTML = 'Tu resultado ya está listo arriba. Tuvimos un problema enviando el correo — si no te llega en unos minutos, escribinos por WhatsApp.';
+    });
+  });
+
+  document.getElementById('restartBtn').addEventListener('click', function(){
+    answers = new Array(QUESTIONS.length).fill(null);
+    currentQ = 0;
+    ['fName','fEmpresa','fPuesto','fCorreo','fWhatsapp'].forEach(function(id){
+      document.getElementById(id).value = '';
+      document.getElementById('field-'+id).classList.remove('invalid');
+    });
+    showScreen(screenIntro);
+  });
+
+})();
+</script>
+</body>
+</html>

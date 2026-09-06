@@ -1,0 +1,9 @@
+{
+  "name": "janus-autodiagnostico",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Autodiagnóstico de Janus con informe personalizado generado por Claude, enviado por correo vía Resend.",
+  "scripts": {
+    "dev": "vercel dev"
+  }
+}
