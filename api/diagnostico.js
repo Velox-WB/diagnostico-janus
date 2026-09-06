@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     const informe = await generarInforme({ contacto, respuestas, puntajeTotal, puntajeMax, porcentaje, zona, focos });
 
     // 2. Construir el HTML de los dos correos
-    const htmlProspecto = construirEmailProspecto({ contacto, informe, porcentaje, zona, focos });
+    const htmlProspecto = construirEmailProspecto({ contacto, informe, porcentaje, zona, focos, puntajeTotal, puntajeMax });
     const htmlInterno = construirEmailInterno({ contacto, informe, porcentaje, zona, focos, respuestas, puntajeTotal, puntajeMax });
 
     // 3. Enviar ambos correos vía Resend
@@ -106,32 +106,49 @@ Devolvé SOLO el texto del informe, sin saludo inicial tipo "Estimado" ni firma 
 }
 
 // ─────────────────────────────────────────────
-// 2. GRÁFICO DE RIESGO — barra segura para email (tabla HTML, sin CSS externo)
+// 2. BARRA DEL UMBRAL — misma pieza visual que en la web (tabla HTML, segura para email)
 // ─────────────────────────────────────────────
-function construirBarraRiesgo(porcentaje) {
-  const riesgoPct = 100 - porcentaje; // el gráfico comunica NIVEL DE RIESGO, no de control
-  const relleno = Math.max(4, riesgoPct); // mínimo visual de 4% para que siempre se note algo
+function construirBarraUmbral(porcentaje, puntajeTotal, puntajeMax) {
+  const pos = Math.min(96, Math.max(4, porcentaje)); // margen para que el punto no se salga del borde
+  const izquierda = pos;
+  const derecha = 100 - pos;
 
   return `
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:20px 0;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:20px 0 6px;">
     <tr>
-      <td style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#7C7C80;padding-bottom:8px;">
-        NIVEL DE RIESGO DETECTADO EN TU NEGOCIO
+      <td style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#7C7C80;padding-bottom:14px;">
+        TU POSICIÓN EN LA ESCALA JANUS
       </td>
     </tr>
     <tr>
       <td>
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#232326;border-radius:4px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
           <tr>
-            <td style="background-color:#FAFAF9;width:${relleno}%;height:14px;border-radius:4px 0 0 4px;font-size:1px;line-height:14px;">&nbsp;</td>
-            <td style="background-color:#232326;height:14px;font-size:1px;line-height:14px;">&nbsp;</td>
+            <td style="width:${izquierda}%;"><div style="height:1px;line-height:1px;font-size:1px;background-color:#5A5A5E;">&nbsp;</div></td>
+            <td style="width:12px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" align="center"><tr>
+                <td style="width:9px;height:9px;line-height:9px;font-size:1px;background-color:#FAFAF9;border-radius:50%;">&nbsp;</td>
+              </tr></table>
+            </td>
+            <td style="width:${derecha}%;"><div style="height:1px;line-height:1px;font-size:1px;background-color:#5A5A5E;">&nbsp;</div></td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
-      <td style="padding-top:8px;font-family:Arial,sans-serif;font-size:12px;color:#ACACB0;">
-        <strong style="color:#FAFAF9;">${riesgoPct}% de riesgo estimado</strong> — según tus propias respuestas sobre seguimiento, forecast y control de tu red de contactos.
+      <td style="padding-top:10px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+          <tr>
+            <td style="text-align:left;font-family:Arial,sans-serif;font-size:11px;color:#7C7C80;">Disperso</td>
+            <td style="text-align:center;font-family:Arial,sans-serif;font-size:11px;color:#7C7C80;">En transición</td>
+            <td style="text-align:right;font-family:Arial,sans-serif;font-size:11px;color:#7C7C80;">Con control</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding-top:12px;font-family:Arial,sans-serif;font-size:13px;color:#ACACB0;">
+        Puntaje: <strong style="color:#FAFAF9;">${puntajeTotal} / ${puntajeMax}</strong> — ${porcentaje}%
       </td>
     </tr>
   </table>`;
@@ -163,8 +180,8 @@ function emailShell(innerHtml) {
   </div>`;
 }
 
-function construirEmailProspecto({ contacto, informe, porcentaje, zona, focos }) {
-  const barra = construirBarraRiesgo(porcentaje);
+function construirEmailProspecto({ contacto, informe, porcentaje, zona, focos, puntajeTotal, puntajeMax }) {
+  const barra = construirBarraUmbral(porcentaje, puntajeTotal, puntajeMax);
   const informeHtml = informe.split('\n\n').map(p =>
     `<p style="font-family:Arial,sans-serif;font-size:15px;line-height:1.7;color:#d8d8da;margin:0 0 16px;">${p}</p>`
   ).join('');
@@ -194,6 +211,7 @@ function construirEmailProspecto({ contacto, informe, porcentaje, zona, focos })
 }
 
 function construirEmailInterno({ contacto, informe, porcentaje, zona, focos, respuestas, puntajeTotal, puntajeMax }) {
+  const barra = construirBarraUmbral(porcentaje, puntajeTotal, puntajeMax);
   const informeHtml = informe.split('\n\n').map(p =>
     `<p style="font-family:Arial,sans-serif;font-size:14px;line-height:1.65;color:#d8d8da;margin:0 0 14px;">${p}</p>`
   ).join('');
@@ -218,7 +236,9 @@ function construirEmailInterno({ contacto, informe, porcentaje, zona, focos, res
       <tr><td style="font-family:Arial,sans-serif;font-size:13px;color:#ACACB0;padding:4px 0;"><strong style="color:#FAFAF9;">Focos:</strong> ${focos.length ? focos.join(', ') : 'Ninguno crítico'}</td></tr>
     </table>
 
-    <div style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#7C7C80;margin-bottom:10px;">Informe generado (el mismo que recibió el prospecto)</div>
+    ${barra}
+
+    <div style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#7C7C80;margin:20px 0 10px;">Informe generado (el mismo que recibió el prospecto)</div>
     ${informeHtml}
 
     <div style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#7C7C80;margin:20px 0 10px;">Respuestas completas</div>
