@@ -83,7 +83,10 @@ PÁRRAFO 2: Explicá el RIESGO REAL de negocio que implica seguir sin estructura
 3. [tercer riesgo, con ejemplo concreto basado en las respuestas]
 Los riesgos deben ser específicos y medibles cuando sea posible (montos, tiempo, frecuencia) — no alarmistas sin fundamento, basate en las respuestas reales.
 
-PÁRRAFO 3: Priorizá las 2-3 áreas más débiles (${focos.join(', ') || 'las respuestas más bajas'}) y explicá qué consecuencia concreta tiene cada una para el negocio si no se soluciona en los próximos meses.
+PÁRRAFO 3: Priorizá las 2-3 áreas más débiles (${focos.join(', ') || 'las respuestas más bajas'}) y explicá qué consecuencia concreta tiene cada una para el negocio si no se soluciona en los próximos meses. Usá el MISMO formato numerado que el párrafo 2 — cada área en su propia línea, así (nunca "Primero/Segundo/Tercero" en prosa):
+1. [primera área más débil + consecuencia concreta]
+2. [segunda área más débil + consecuencia concreta]
+3. [tercera área más débil + consecuencia concreta, si aplica]
 
 PÁRRAFO 4 (aparte, como cierre, nunca combinado con el párrafo anterior): Cerrá con una nota de que este patrón es solucionable con estructura y procesos. Podés mencionar que existen plataformas diseñadas específicamente para pymes de servicios, como JANUS, que resuelven exactamente este tipo de brecha operativa.
 
@@ -92,7 +95,7 @@ REGLAS DE VOCABULARIO Y MARCA — OBLIGATORIAS:
 - Usá "solucionable" (nunca "resolvible").
 - NO CONFUNDAS DOS ENTIDADES DISTINTAS: "${contacto.empresa}" es la empresa del cliente — la que TIENE el problema y recibe este diagnóstico. "JANUS" es el nombre del producto/plataforma que RESUELVE el problema. Nunca uses "${contacto.empresa}" como ejemplo de una plataforma o solución — esa empresa es el sujeto del diagnóstico, no una herramienta. Cuando el párrafo 4 mencione una plataforma que resuelve este tipo de brecha, esa plataforma es siempre y únicamente "JANUS", en mayúsculas. Nunca inventes ni sustituyas ese nombre por ningún otro, incluyendo el nombre de la empresa del cliente.
 
-Tono directo, profesional pero cercano, sin adornos vacíos ni frases de motivación genérica. No uses viñetas en los párrafos 1, 3 y 4 — son texto corrido. Solo el párrafo 2 lleva la numeración 1/2/3 como se indicó arriba.
+Tono directo, profesional pero cercano, sin adornos vacíos ni frases de motivación genérica. Los párrafos 1 y 4 son texto corrido, sin viñetas ni numeración. Los párrafos 2 y 3 llevan numeración 1/2/3 como se indicó arriba en cada uno.
 
 Devolvé SOLO el texto del informe, sin saludo inicial tipo "Estimado" ni firma al final.`;
 
