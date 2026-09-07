@@ -182,8 +182,8 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
   <section class="screen active" id="screen-intro">
     <div class="eyebrow"><span class="dot"></span> Autodiagnóstico Janus</div>
     <div class="intro">
-      <h1>Descubrí qué tan cerca estás de <em>perder el control</em> de tu red.</h1>
-      <p>Respondé 8 preguntas breves sobre cómo gestionás hoy tus contactos y tu proceso comercial. Vas a recibir un análisis personalizado, generado con IA a partir de tus respuestas — directo a tu correo.</p>
+      <h1>Descubrí qué tan cerca está tu empresa de <em>perder el control</em> de su red.</h1>
+      <p>Respondé 8 preguntas breves sobre cómo gestiona hoy tu empresa sus contactos y su proceso comercial. Vas a recibir un análisis personalizado, generado con IA a partir de tus respuestas — directo a tu correo.</p>
       <p class="meta-line">3 minutos · Análisis personalizado por correo · Sin compromiso</p>
       <ul class="intro-list">
         <li><span class="n">01</span> Respondé con tu situación real, no con la ideal.</li>
@@ -223,7 +223,7 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
       </div>
       <div class="field" id="field-fPuesto">
         <label for="fPuesto">Puesto</label>
-        <input type="text" id="fPuesto" placeholder="Ej. Consultor independiente" autocomplete="organization-title">
+        <input type="text" id="fPuesto" placeholder="Ej. Gerente Comercial" autocomplete="organization-title">
         <div class="field-error">Ingresá tu puesto.</div>
       </div>
     </div>
@@ -292,95 +292,95 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
   var QUESTIONS = [
     {
       cat: "Contactos",
-      q: "¿Qué tan fácil es hoy encontrar la información de un contacto que conociste hace tres meses?",
+      q: "¿Qué tan centralizada está la información de contactos en tu empresa hoy?",
       opts: [
-        {t:"Tendría que buscar entre tarjetas, WhatsApp y notas sueltas", s:0},
-        {t:"Lo tengo en una lista o Excel que actualizo cuando puedo", s:1},
-        {t:"Lo tengo centralizado, pero me toma tiempo revisarlo", s:2},
-        {t:"Lo encuentro al instante, con todo el contexto", s:3}
+        {t:"Cada persona del equipo maneja los suyos, dispersos en tarjetas, WhatsApp y notas", s:0},
+        {t:"Existe una lista o Excel compartido, pero se actualiza de forma irregular", s:1},
+        {t:"Hay un lugar centralizado, aunque no todos lo consultan por igual", s:2},
+        {t:"Todo el equipo accede a la misma información, actualizada y con contexto completo", s:3}
       ]
     },
     {
       cat: "Seguimiento",
-      q: "¿Qué tan seguido se te enfría una oportunidad por falta de seguimiento a tiempo?",
+      q: "¿Qué tan seguido se pierden oportunidades comerciales por falta de un seguimiento estructurado?",
       opts: [
-        {t:"Constantemente — pierdo la cuenta de a quién le debo escribir", s:0},
-        {t:"A veces, cuando ando muy ocupado", s:1},
-        {t:"Rara vez, trato de estar encima", s:2},
-        {t:"Nunca — tengo un sistema que me avisa antes", s:3}
+        {t:"Constantemente — no hay un proceso que garantice el seguimiento de cada oportunidad", s:0},
+        {t:"A veces, cuando quien la lleva anda muy ocupado", s:1},
+        {t:"Rara vez — el equipo se organiza para estar encima", s:2},
+        {t:"Nunca — existe un sistema que avisa antes de que una oportunidad se enfríe", s:3}
       ]
     },
     {
       cat: "Forecast",
-      q: "¿Podés decir con certeza cuánto vas a facturar el próximo trimestre?",
+      q: "¿La empresa puede proyectar con certeza cuánto va a facturar el próximo trimestre?",
       opts: [
-        {t:"No tengo idea, es pura intuición", s:0},
-        {t:"Tengo una idea general, nada preciso", s:1},
-        {t:"Puedo estimarlo con algo de esfuerzo", s:2},
-        {t:"Sí, con una cifra real y actualizada", s:3}
+        {t:"No — depende de la intuición de quien lleva cada cuenta", s:0},
+        {t:"Hay una idea general, sin datos consolidados", s:1},
+        {t:"Se puede estimar, aunque toma esfuerzo reunir la información", s:2},
+        {t:"Sí, existe una cifra real, consolidada y actualizada", s:3}
       ]
     },
     {
       cat: "Pipeline",
-      q: "¿Qué tan claro tenés en qué etapa está cada oportunidad activa ahora mismo?",
+      q: "¿Qué tan clara está, para todo el equipo, la etapa en la que está cada oportunidad activa?",
       opts: [
-        {t:"No llevo un registro de etapas", s:0},
-        {t:"Lo tengo en la cabeza, sin escribirlo en ningún lado", s:1},
-        {t:"Lo anoto, pero no siempre está actualizado", s:2},
-        {t:"Tengo visibilidad completa y actualizada", s:3}
+        {t:"No existe un registro de etapas — cada quien lo maneja a su manera", s:0},
+        {t:"Cada persona lo tiene en su cabeza, sin un lugar compartido", s:1},
+        {t:"Se anota en algún lugar, pero no siempre está actualizado", s:2},
+        {t:"Hay visibilidad completa y compartida por todo el equipo", s:3}
       ]
     },
     {
-      cat: "Tiempo administrativo",
-      q: "¿Cuánto tiempo a la semana pasás organizando contactos y seguimientos a mano?",
+      cat: "Eficiencia operativa",
+      q: "¿Cuánto tiempo del equipo se va, cada semana, en organizar contactos y seguimientos a mano?",
       opts: [
-        {t:"Varias horas, y aun así se me escapan cosas", s:0},
-        {t:"Un par de horas, entre WhatsApp y notas", s:1},
-        {t:"Poco tiempo, ya tengo cierto orden", s:2},
-        {t:"Casi nada, es prácticamente automático", s:3}
+        {t:"Varias horas entre todos, y aun así se escapan cosas", s:0},
+        {t:"Un par de horas, repartidas entre WhatsApp y notas sueltas", s:1},
+        {t:"Poco tiempo — ya hay cierto orden", s:2},
+        {t:"Casi nada — es prácticamente automático", s:3}
       ]
     },
     {
       cat: "Referidos",
-      q: "¿Sabés con certeza quién te ha dado los mejores referidos este año?",
+      q: "¿La empresa tiene visibilidad clara de qué fuentes le generan los mejores referidos?",
       opts: [
-        {t:"No tengo forma de saberlo", s:0},
-        {t:"Tengo una idea vaga", s:1},
-        {t:"Podría averiguarlo revisando mis notas", s:2},
-        {t:"Sí, tengo esa visibilidad clara", s:3}
+        {t:"No hay forma de saberlo con los datos actuales", s:0},
+        {t:"Hay una idea vaga, sin datos que la respalden", s:1},
+        {t:"Se podría averiguar revisando notas dispersas", s:2},
+        {t:"Sí, existe esa visibilidad clara y consolidada", s:3}
       ]
     },
     {
       cat: "Contratos recurrentes",
-      q: "Si tenés clientes con contratos o servicios recurrentes, ¿sabés cuándo vence cada uno?",
+      q: "Si la empresa tiene clientes con contratos o servicios recurrentes, ¿existe un control de cuándo vence cada uno?",
       opts: [
-        {t:"No lo sé hasta que el cliente pregunta", s:0},
-        {t:"Tengo una idea aproximada", s:1},
-        {t:"Lo reviso manualmente de vez en cuando", s:2},
-        {t:"Tengo alertas claras de cada vencimiento", s:3}
+        {t:"No se sabe hasta que el cliente pregunta", s:0},
+        {t:"Hay una idea aproximada", s:1},
+        {t:"Se revisa manualmente de vez en cuando", s:2},
+        {t:"Existen alertas claras de cada vencimiento", s:3}
       ]
     },
     {
       cat: "Continuidad",
-      q: "Si dejaras de revisar tu WhatsApp y tus notas por dos semanas, ¿tu seguimiento comercial seguiría funcionando?",
+      q: "Si la persona que hoy lleva el seguimiento comercial se ausentara dos semanas, ¿el proceso seguiría funcionando?",
       opts: [
-        {t:"No — todo depende de que yo esté encima", s:0},
+        {t:"No — todo depende de que esa persona esté presente", s:0},
         {t:"Con tropiezos, probablemente", s:1},
         {t:"Bastante bien, con alguna excepción", s:2},
-        {t:"Sí, sin ningún problema", s:3}
+        {t:"Sí, sin ningún problema — no depende de una sola persona", s:3}
       ]
     }
   ];
 
   var FOCUS_SUGGESTIONS = {
-    "Contactos": "Centralizar tus contactos en un solo lugar — no repartidos entre tarjetas y WhatsApp.",
-    "Seguimiento": "Un sistema de alertas que te avise antes de que una oportunidad se enfríe.",
-    "Forecast": "Ver tu proyección de facturación mes a mes, no adivinarla.",
-    "Pipeline": "Un tablero visual que te muestre en qué etapa está cada oportunidad.",
-    "Tiempo administrativo": "Automatizar el registro de contactos con escaneo de tarjetas por IA.",
-    "Referidos": "Un ranking automático de quién te refiere más negocio.",
-    "Contratos recurrentes": "Alertas de vencimiento para no perder ingreso recurrente por descuido.",
-    "Continuidad": "Un sistema que sostenga tu seguimiento aunque vos no estés encima todo el tiempo."
+    "Contactos": "Centralizar la información de contactos en un solo sistema accesible para todo el equipo.",
+    "Seguimiento": "Un proceso de seguimiento con alertas automáticas, que no dependa de la memoria de una sola persona.",
+    "Forecast": "Una proyección de facturación consolidada y visible para quien toma decisiones.",
+    "Pipeline": "Un tablero compartido donde todo el equipo vea en qué etapa está cada oportunidad.",
+    "Eficiencia operativa": "Automatizar el registro de contactos y seguimientos para liberar tiempo del equipo.",
+    "Referidos": "Un sistema que identifique automáticamente qué fuentes generan más negocio.",
+    "Contratos recurrentes": "Alertas de vencimiento centralizadas, para no depender de que alguien lo recuerde.",
+    "Continuidad": "Un sistema que sostenga la operación comercial sin depender de una sola persona."
   };
 
   var answers = new Array(QUESTIONS.length).fill(null);
@@ -501,15 +501,15 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
     if(pct < 34){
       zone = 'disperso'; zoneLabel = 'Zona: Disperso';
       title = 'Tu negocio está operando con un nivel alto de dispersión y riesgo.';
-      paragraph = 'Gran parte de tu seguimiento depende hoy de la memoria y no de un sistema. No es un juicio — es la fotografía del momento en que se encuentran muchos consultores independientes antes de ordenar esta parte del negocio.';
+      paragraph = 'Gran parte del seguimiento comercial depende hoy de la memoria de personas puntuales, y no de un sistema compartido. No es un juicio — es la fotografía del momento en que se encuentran muchas empresas pequeñas antes de ordenar esta parte del negocio.';
     } else if(pct < 67){
       zone = 'transicion'; zoneLabel = 'Zona: En transición';
-      title = 'Ya dejaste atrás el desorden total, pero todavía hay puntos ciegos.';
-      paragraph = 'Hay partes de tu proceso comercial que ya están razonablemente bajo control, y otras que todavía dependen de que te acordés. Si tu red sigue creciendo al ritmo actual, esos puntos ciegos se vuelven más caros de resolver.';
+      title = 'La empresa ya dejó atrás el desorden total, pero todavía hay puntos ciegos.';
+      paragraph = 'Hay partes del proceso comercial que ya están razonablemente bajo control, y otras que todavía dependen de que una persona puntual se acuerde. Si la operación sigue creciendo al ritmo actual, esos puntos ciegos se vuelven más caros de resolver.';
     } else {
       zone = 'control'; zoneLabel = 'Zona: Con control';
-      title = 'Tenés un nivel de control superior al de la mayoría de los consultores independientes.';
-      paragraph = 'El siguiente paso ya no es urgente — es estratégico: sostener ese orden para que tu negocio pueda crecer sin que el seguimiento se vuelva un cuello de botella.';
+      title = 'Tu empresa tiene un nivel de control superior al de la mayoría de las pymes de servicios.';
+      paragraph = 'El siguiente paso ya no es urgente — es estratégico: sostener ese orden para que el negocio pueda crecer, incluso sumando más gente al equipo, sin que el seguimiento se vuelva un cuello de botella.';
     }
 
     catScores.sort(function(a,b){ return a.score - b.score; });
