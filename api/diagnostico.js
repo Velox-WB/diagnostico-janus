@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { contacto, respuestas, puntajeTotal, puntajeMax, porcentaje, zona, focos } = req.body;
+    const { contacto, respuestas, puntajeTotal, puntajeMax, porcentaje, zona, titulo, focos } = req.body;
 
     if (!contacto || !contacto.correo || !contacto.nombre) {
       return res.status(400).json({ error: 'Faltan datos de contacto requeridos.' });
@@ -19,8 +19,8 @@ export default async function handler(req, res) {
     const informe = await generarInforme({ contacto, respuestas, puntajeTotal, puntajeMax, porcentaje, zona, focos });
 
     // 2. Construir el HTML de los dos correos
-    const htmlProspecto = construirEmailProspecto({ contacto, informe, porcentaje, zona, focos, puntajeTotal, puntajeMax });
-    const htmlInterno = construirEmailInterno({ contacto, informe, porcentaje, zona, focos, respuestas, puntajeTotal, puntajeMax });
+    const htmlProspecto = construirEmailProspecto({ contacto, informe, porcentaje, zona, titulo, focos, puntajeTotal, puntajeMax });
+    const htmlInterno = construirEmailInterno({ contacto, informe, porcentaje, zona, titulo, focos, respuestas, puntajeTotal, puntajeMax });
 
     // 3. Enviar ambos correos vía Resend
     const fromEmail = process.env.FROM_EMAIL || 'Janus <diagnostico@janus.money>';
@@ -183,7 +183,7 @@ function emailShell(innerHtml) {
   </div>`;
 }
 
-function construirEmailProspecto({ contacto, informe, porcentaje, zona, focos, puntajeTotal, puntajeMax }) {
+function construirEmailProspecto({ contacto, informe, porcentaje, zona, titulo, focos, puntajeTotal, puntajeMax }) {
   const barra = construirBarraUmbral(porcentaje, puntajeTotal, puntajeMax);
   const informeHtml = informe.split('\n\n').map(p =>
     `<p style="font-family:Arial,sans-serif;font-size:15px;line-height:1.7;color:#d8d8da;margin:0 0 16px;">${p}</p>`
@@ -200,8 +200,9 @@ function construirEmailProspecto({ contacto, informe, porcentaje, zona, focos, p
   const waText = encodeURIComponent(`Hola, soy ${contacto.nombre} (${contacto.puesto} en ${contacto.empresa}). Acabo de recibir mi diagnóstico de Janus (${zona}) y quiero conversar sobre mi resultado.`);
 
   return emailShell(`
+    <p style="font-family:Arial,sans-serif;font-size:14px;color:#ACACB0;margin:0 0 20px;">Hola ${contacto.nombre.split(' ')[0]},</p>
     <div style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#7C7C80;margin-bottom:8px;">${zona}</div>
-    <h1 style="font-family:Arial,sans-serif;font-size:24px;color:#FAFAF9;margin:0 0 20px;line-height:1.3;">Hola ${contacto.nombre.split(' ')[0]}, este es su diagnóstico.</h1>
+    <h1 style="font-family:Arial,sans-serif;font-size:24px;color:#FAFAF9;margin:0 0 20px;line-height:1.3;">${titulo}</h1>
     ${barra}
     ${informeHtml}
     ${focosHtml}
@@ -213,7 +214,7 @@ function construirEmailProspecto({ contacto, informe, porcentaje, zona, focos, p
   `);
 }
 
-function construirEmailInterno({ contacto, informe, porcentaje, zona, focos, respuestas, puntajeTotal, puntajeMax }) {
+function construirEmailInterno({ contacto, informe, porcentaje, zona, titulo, focos, respuestas, puntajeTotal, puntajeMax }) {
   const barra = construirBarraUmbral(porcentaje, puntajeTotal, puntajeMax);
   const informeHtml = informe.split('\n\n').map(p =>
     `<p style="font-family:Arial,sans-serif;font-size:14px;line-height:1.65;color:#d8d8da;margin:0 0 14px;">${p}</p>`
@@ -236,6 +237,7 @@ function construirEmailInterno({ contacto, informe, porcentaje, zona, focos, res
       <tr><td style="font-family:Arial,sans-serif;font-size:13px;color:#ACACB0;padding:4px 0;"><strong style="color:#FAFAF9;">Correo:</strong> ${contacto.correo}</td></tr>
       <tr><td style="font-family:Arial,sans-serif;font-size:13px;color:#ACACB0;padding:4px 0;"><strong style="color:#FAFAF9;">WhatsApp:</strong> ${contacto.whatsapp}</td></tr>
       <tr><td style="font-family:Arial,sans-serif;font-size:13px;color:#ACACB0;padding:4px 0;"><strong style="color:#FAFAF9;">Resultado:</strong> ${zona} — ${puntajeTotal}/${puntajeMax} (${porcentaje}%)</td></tr>
+      <tr><td style="font-family:Arial,sans-serif;font-size:13px;color:#ACACB0;padding:4px 0;"><strong style="color:#FAFAF9;">Título del diagnóstico:</strong> ${titulo}</td></tr>
       <tr><td style="font-family:Arial,sans-serif;font-size:13px;color:#ACACB0;padding:4px 0;"><strong style="color:#FAFAF9;">Focos:</strong> ${focos.length ? focos.join(', ') : 'Ninguno crítico'}</td></tr>
     </table>
 
