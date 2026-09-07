@@ -63,7 +63,7 @@ async function generarInforme({ contacto, respuestas, puntajeTotal, puntajeMax, 
 Este autodiagnóstico evalúa qué tan estructurado está el proceso comercial de una empresa pequeña (Janus es una plataforma de gestión comercial multiusuario para pymes de servicios — no una herramienta para un solo consultor).
 
 REGLA CENTRAL DEL INFORME — LEÉ ESTO CON CUIDADO:
-El diagnóstico es sobre LA EMPRESA y sus procesos, NUNCA sobre los hábitos personales de ${contacto.nombre}. ${contacto.nombre} es quien respondió el formulario en representación de la empresa, pero el sujeto del informe es siempre el negocio: su estructura, su falta de procesos, su nivel de control, su dependencia de personas puntuales. Evitá frases dirigidas a la persona como "vos deberías", "te falta disciplina", "tu memoria falla" — en vez de eso, hablá de "la empresa", "el equipo", "la operación comercial", "el negocio". Podés dirigirte a ${contacto.nombre.split(' ')[0]} directamente para contextualizar (ej. "${contacto.nombre.split(' ')[0]}, tu diagnóstico muestra que la empresa..."), pero el diagnóstico en sí describe brechas estructurales del negocio, no fallas personales.
+El diagnóstico es sobre LA EMPRESA y sus procesos, NUNCA sobre los hábitos personales de ${contacto.nombre}. ${contacto.nombre} es quien respondió el formulario en representación de la empresa, pero el sujeto del informe es siempre el negocio: su estructura, su falta de procesos, su nivel de control, su dependencia de personas puntuales. Evitá frases dirigidas a la persona como "usted debería", "le falta disciplina", "su memoria falla" — en vez de eso, hablá de "la empresa", "el equipo", "la operación comercial", "el negocio". Podés dirigirte a ${contacto.nombre.split(' ')[0]} directamente para contextualizar (ej. "${contacto.nombre.split(' ')[0]}, su diagnóstico muestra que la empresa..."), pero el diagnóstico en sí describe brechas estructurales del negocio, no fallas personales.
 
 DATOS DEL DIAGNÓSTICO:
 - Puntaje: ${puntajeTotal}/${puntajeMax} (${porcentaje}%)
@@ -73,7 +73,7 @@ DATOS DEL DIAGNÓSTICO:
 RESPUESTAS COMPLETAS:
 ${respuestasTexto}
 
-Escribí el informe en español de Costa Rica, usando "vos" al dirigirte a ${contacto.nombre.split(' ')[0]} (nunca "tú" ni "usted"). El informe debe:
+Escribí el informe en español de Costa Rica, usando "usted" al dirigirte a ${contacto.nombre.split(' ')[0]} (nunca "tú" ni "vos"). El informe debe:
 
 1. Abrir dirigiéndote a ${contacto.nombre.split(' ')[0]} brevemente, pero pasando de inmediato a describir el patrón estructural que revelan las respuestas — referite a detalles concretos que se dieron (ej. si la respuesta indica que cada persona del equipo maneja sus propios contactos, mencionalo como una brecha de la operación, no como un descuido individual).
 2. Explicar con números y ejemplos concretos el RIESGO REAL de negocio que implica seguir sin estructura — oportunidades que se pierden por falta de proceso, ingreso que la empresa no puede proyectar, contratos recurrentes que se vencen sin control, tiempo del equipo que se va en tareas administrativas en vez de vender, y el riesgo de que la operación dependa de que una sola persona esté presente. Sé específico y honesto, no alarmista sin fundamento — basate en las respuestas reales.
@@ -201,7 +201,7 @@ function construirEmailProspecto({ contacto, informe, porcentaje, zona, focos, p
 
   return emailShell(`
     <div style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#7C7C80;margin-bottom:8px;">${zona}</div>
-    <h1 style="font-family:Arial,sans-serif;font-size:24px;color:#FAFAF9;margin:0 0 20px;line-height:1.3;">Hola ${contacto.nombre.split(' ')[0]}, este es tu diagnóstico.</h1>
+    <h1 style="font-family:Arial,sans-serif;font-size:24px;color:#FAFAF9;margin:0 0 20px;line-height:1.3;">Hola ${contacto.nombre.split(' ')[0]}, este es su diagnóstico.</h1>
     ${barra}
     ${informeHtml}
     ${focosHtml}
