@@ -73,14 +73,26 @@ DATOS DEL DIAGNÓSTICO:
 RESPUESTAS COMPLETAS:
 ${respuestasTexto}
 
-Escribí el informe en español de Costa Rica, usando "usted" al dirigirte a ${contacto.nombre.split(' ')[0]} (nunca "tú" ni "vos"). El informe debe:
+Escribí el informe en español de Costa Rica, usando "usted" al dirigirte a ${contacto.nombre.split(' ')[0]} (nunca "tú" ni "vos"). El informe debe tener esta estructura EXACTA, en 4 párrafos separados (con línea en blanco entre cada uno):
 
-1. Abrir dirigiéndote a ${contacto.nombre.split(' ')[0]} brevemente, pero pasando de inmediato a describir el patrón estructural que revelan las respuestas — referite a detalles concretos que se dieron (ej. si la respuesta indica que cada persona del equipo maneja sus propios contactos, mencionalo como una brecha de la operación, no como un descuido individual).
-2. Explicar con números y ejemplos concretos el RIESGO REAL de negocio que implica seguir sin estructura — oportunidades que se pierden por falta de proceso, ingreso que la empresa no puede proyectar, contratos recurrentes que se vencen sin control, tiempo del equipo que se va en tareas administrativas en vez de vender, y el riesgo de que la operación dependa de que una sola persona esté presente. Sé específico y honesto, no alarmista sin fundamento — basate en las respuestas reales.
-3. Priorizar las 2-3 áreas más débiles (${focos.join(', ') || 'las respuestas más bajas'}) y explicar qué consecuencia concreta tiene cada una para el negocio si no se resuelve en los próximos meses.
-4. Cerrar con una nota de que este patrón es resolvible con estructura y procesos — sin mencionar productos específicos de forma insistente, pero podés mencionar que existen plataformas como Janus (gestión comercial multiusuario para pymes de servicios) que resuelven exactamente este tipo de brecha operativa.
+PÁRRAFO 1: Abrí dirigiéndote a ${contacto.nombre.split(' ')[0]} brevemente, pero pasando de inmediato a describir el patrón estructural que revelan las respuestas — referite a detalles concretos que se dieron (ej. si la respuesta indica que cada persona del equipo maneja sus propios contactos, mencionalo como una brecha de la operación, no como un descuido individual).
 
-Extensión: 4-5 párrafos. Tono directo, profesional pero cercano, sin adornos vacíos ni frases de motivación genérica. No uses viñetas ni encabezados — es un texto corrido, como una carta de un estratega de negocios dirigida a quien lidera la empresa.
+PÁRRAFO 2: Explicá el RIESGO REAL de negocio que implica seguir sin estructura. Presentá exactamente TRES riesgos concretos, cada uno en su propia línea, con este formato exacto (numeración seguida de un salto de línea simple entre cada uno, todos dentro de este mismo párrafo):
+1. [primer riesgo, con ejemplo concreto basado en las respuestas]
+2. [segundo riesgo, con ejemplo concreto basado en las respuestas]
+3. [tercer riesgo, con ejemplo concreto basado en las respuestas]
+Los riesgos deben ser específicos y medibles cuando sea posible (montos, tiempo, frecuencia) — no alarmistas sin fundamento, basate en las respuestas reales.
+
+PÁRRAFO 3: Priorizá las 2-3 áreas más débiles (${focos.join(', ') || 'las respuestas más bajas'}) y explicá qué consecuencia concreta tiene cada una para el negocio si no se soluciona en los próximos meses.
+
+PÁRRAFO 4 (aparte, como cierre, nunca combinado con el párrafo anterior): Cerrá con una nota de que este patrón es solucionable con estructura y procesos. Podés mencionar que existen plataformas diseñadas específicamente para pymes de servicios, como JANUS, que resuelven exactamente este tipo de brecha operativa.
+
+REGLAS DE VOCABULARIO Y MARCA — OBLIGATORIAS:
+- Usá "medible" (nunca "mensurable").
+- Usá "solucionable" (nunca "resolvible").
+- NO CONFUNDAS DOS ENTIDADES DISTINTAS: "${contacto.empresa}" es la empresa del cliente — la que TIENE el problema y recibe este diagnóstico. "JANUS" es el nombre del producto/plataforma que RESUELVE el problema. Nunca uses "${contacto.empresa}" como ejemplo de una plataforma o solución — esa empresa es el sujeto del diagnóstico, no una herramienta. Cuando el párrafo 4 mencione una plataforma que resuelve este tipo de brecha, esa plataforma es siempre y únicamente "JANUS", en mayúsculas. Nunca inventes ni sustituyas ese nombre por ningún otro, incluyendo el nombre de la empresa del cliente.
+
+Tono directo, profesional pero cercano, sin adornos vacíos ni frases de motivación genérica. No uses viñetas en los párrafos 1, 3 y 4 — son texto corrido. Solo el párrafo 2 lleva la numeración 1/2/3 como se indicó arriba.
 
 Devolvé SOLO el texto del informe, sin saludo inicial tipo "Estimado" ni firma al final.`;
 
@@ -111,6 +123,39 @@ Devolvé SOLO el texto del informe, sin saludo inicial tipo "Estimado" ni firma 
 // ─────────────────────────────────────────────
 // 2. BARRA DEL UMBRAL — misma pieza visual que en la web (tabla HTML, segura para email)
 // ─────────────────────────────────────────────
+// ─────────────────────────────────────────────
+// RENDERIZADO DEL INFORME — detecta el párrafo con lista numerada (1/2/3)
+// y lo convierte en una lista con estilo, en vez de texto corrido.
+// ─────────────────────────────────────────────
+function renderInformeHtml(informe) {
+  const parrafos = informe.split('\n\n').filter(p => p.trim().length > 0);
+
+  return parrafos.map((p, i) => {
+    const marginTop = (i === 0) ? '24px' : '0';
+    const tieneListaNumerada = /\n\s*2\.\s/.test(p) && /\n\s*3\.\s/.test(p) && /(^|\n)\s*1\.\s/.test(p);
+
+    if (tieneListaNumerada) {
+      // Todo lo que aparece antes del "1." (si existe) se trata como frase introductoria.
+      const corte = p.search(/(^|\n)\s*1\.\s/);
+      const intro = p.slice(0, corte).trim();
+      const listaTexto = p.slice(corte).trim();
+
+      const items = listaTexto.split(/\n(?=\s*\d\.\s)/).map(item => item.replace(/^\s*\d\.\s*/, '').trim());
+      const itemsHtml = items.map((item, idx) => `
+        <tr>
+          <td style="width:26px;vertical-align:top;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;color:#FAFAF9;padding:6px 8px 6px 0;">${idx + 1}.</td>
+          <td style="vertical-align:top;font-family:Arial,sans-serif;font-size:15px;line-height:1.7;color:#d8d8da;padding:6px 0;">${item}</td>
+        </tr>`).join('');
+
+      const introHtml = intro ? `<p style="font-family:Arial,sans-serif;font-size:15px;line-height:1.7;color:#d8d8da;margin:${marginTop} 0 10px;">${intro}</p>` : '';
+      const listMarginTop = intro ? '0' : marginTop;
+      return `${introHtml}<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:${listMarginTop} 0 16px;">${itemsHtml}</table>`;
+    }
+
+    return `<p style="font-family:Arial,sans-serif;font-size:15px;line-height:1.7;color:#d8d8da;margin:${marginTop} 0 16px;">${p}</p>`;
+  }).join('');
+}
+
 function construirBarraUmbral(porcentaje, puntajeTotal, puntajeMax) {
   const pos = Math.min(96, Math.max(4, porcentaje)); // margen para que el punto no se salga del borde
   const izquierda = pos;
@@ -185,9 +230,7 @@ function emailShell(innerHtml) {
 
 function construirEmailProspecto({ contacto, informe, porcentaje, zona, titulo, focos, puntajeTotal, puntajeMax }) {
   const barra = construirBarraUmbral(porcentaje, puntajeTotal, puntajeMax);
-  const informeHtml = informe.split('\n\n').map(p =>
-    `<p style="font-family:Arial,sans-serif;font-size:15px;line-height:1.7;color:#d8d8da;margin:0 0 16px;">${p}</p>`
-  ).join('');
+  const informeHtml = renderInformeHtml(informe);
 
   const focosHtml = focos.length ? `
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#0F0F11;border-left:2px solid #FAFAF9;border-radius:0 4px 4px 0;margin:24px 0;">
@@ -216,9 +259,7 @@ function construirEmailProspecto({ contacto, informe, porcentaje, zona, titulo, 
 
 function construirEmailInterno({ contacto, informe, porcentaje, zona, titulo, focos, respuestas, puntajeTotal, puntajeMax }) {
   const barra = construirBarraUmbral(porcentaje, puntajeTotal, puntajeMax);
-  const informeHtml = informe.split('\n\n').map(p =>
-    `<p style="font-family:Arial,sans-serif;font-size:14px;line-height:1.65;color:#d8d8da;margin:0 0 14px;">${p}</p>`
-  ).join('');
+  const informeHtml = renderInformeHtml(informe);
 
   const respuestasHtml = respuestas.map(r => `
     <tr>
