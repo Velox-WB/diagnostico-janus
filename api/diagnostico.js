@@ -58,9 +58,12 @@ async function generarInforme({ contacto, respuestas, puntajeTotal, puntajeMax, 
     `- [${r.categoria}] ${r.pregunta}\n  Respuesta: "${r.respuesta}" (puntaje ${r.puntaje}/3)`
   ).join('\n');
 
-  const prompt = `Sos un estratega de negocios escribiendo un informe de diagnóstico personalizado para ${contacto.nombre}, ${contacto.puesto} en ${contacto.empresa}.
+  const prompt = `Sos un estratega de negocios escribiendo un informe de diagnóstico para la empresa ${contacto.empresa}, a partir del autodiagnóstico que completó ${contacto.nombre} (${contacto.puesto}).
 
-Esta persona completó un autodiagnóstico sobre cómo gestiona su red de contactos y su proceso comercial (para consultores independientes, coaches y profesionales de servicios B2B que viven del networking activo).
+Este autodiagnóstico evalúa qué tan estructurado está el proceso comercial de una empresa pequeña (Janus es una plataforma de gestión comercial multiusuario para pymes de servicios — no una herramienta para un solo consultor).
+
+REGLA CENTRAL DEL INFORME — LEÉ ESTO CON CUIDADO:
+El diagnóstico es sobre LA EMPRESA y sus procesos, NUNCA sobre los hábitos personales de ${contacto.nombre}. ${contacto.nombre} es quien respondió el formulario en representación de la empresa, pero el sujeto del informe es siempre el negocio: su estructura, su falta de procesos, su nivel de control, su dependencia de personas puntuales. Evitá frases dirigidas a la persona como "vos deberías", "te falta disciplina", "tu memoria falla" — en vez de eso, hablá de "la empresa", "el equipo", "la operación comercial", "el negocio". Podés dirigirte a ${contacto.nombre.split(' ')[0]} directamente para contextualizar (ej. "${contacto.nombre.split(' ')[0]}, tu diagnóstico muestra que la empresa..."), pero el diagnóstico en sí describe brechas estructurales del negocio, no fallas personales.
 
 DATOS DEL DIAGNÓSTICO:
 - Puntaje: ${puntajeTotal}/${puntajeMax} (${porcentaje}%)
@@ -70,14 +73,14 @@ DATOS DEL DIAGNÓSTICO:
 RESPUESTAS COMPLETAS:
 ${respuestasTexto}
 
-Escribí un informe de diagnóstico personalizado, en español de Costa Rica, usando "vos" (nunca "tú" ni "usted"). El informe debe:
+Escribí el informe en español de Costa Rica, usando "vos" al dirigirte a ${contacto.nombre.split(' ')[0]} (nunca "tú" ni "usted"). El informe debe:
 
-1. Abrir reconociendo su situación específica según sus respuestas — no genérico, referite a detalles concretos que dio (ej. si dijo que le toma horas organizar contactos a mano, mencionalo).
-2. Explicar con números y ejemplos concretos el RIESGO REAL de negocio que implica seguir así — oportunidades que se enfrían, ingreso que no se puede proyectar, contratos recurrentes que se pueden vencer sin aviso, tiempo que se pierde en tareas administrativas en vez de vender. Sé específico y honesto, no alarmista sin fundamento — basate en sus respuestas reales.
-3. Priorizar sus 2-3 áreas más débiles (${focos.join(', ') || 'sus respuestas más bajas'}) y explicar qué consecuencia concreta tiene cada una si no se resuelve en los próximos meses.
-4. Cerrar con una nota de que este patrón es resolvible con estructura — sin mencionar productos específicos de forma insistente, pero podés mencionar que existen herramientas como Janus (CRM ligero para consultores) que resuelven exactamente este tipo de fricción.
+1. Abrir dirigiéndote a ${contacto.nombre.split(' ')[0]} brevemente, pero pasando de inmediato a describir el patrón estructural que revelan las respuestas — referite a detalles concretos que se dieron (ej. si la respuesta indica que cada persona del equipo maneja sus propios contactos, mencionalo como una brecha de la operación, no como un descuido individual).
+2. Explicar con números y ejemplos concretos el RIESGO REAL de negocio que implica seguir sin estructura — oportunidades que se pierden por falta de proceso, ingreso que la empresa no puede proyectar, contratos recurrentes que se vencen sin control, tiempo del equipo que se va en tareas administrativas en vez de vender, y el riesgo de que la operación dependa de que una sola persona esté presente. Sé específico y honesto, no alarmista sin fundamento — basate en las respuestas reales.
+3. Priorizar las 2-3 áreas más débiles (${focos.join(', ') || 'las respuestas más bajas'}) y explicar qué consecuencia concreta tiene cada una para el negocio si no se resuelve en los próximos meses.
+4. Cerrar con una nota de que este patrón es resolvible con estructura y procesos — sin mencionar productos específicos de forma insistente, pero podés mencionar que existen plataformas como Janus (gestión comercial multiusuario para pymes de servicios) que resuelven exactamente este tipo de brecha operativa.
 
-Extensión: 4-5 párrafos. Tono directo, profesional pero cercano, sin adornos vacíos ni frases de motivación genérica. No uses viñetas ni encabezados — es un texto corrido, como una carta personal de un estratega de negocios.
+Extensión: 4-5 párrafos. Tono directo, profesional pero cercano, sin adornos vacíos ni frases de motivación genérica. No uses viñetas ni encabezados — es un texto corrido, como una carta de un estratega de negocios dirigida a quien lidera la empresa.
 
 Devolvé SOLO el texto del informe, sin saludo inicial tipo "Estimado" ni firma al final.`;
 
