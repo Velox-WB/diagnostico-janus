@@ -4,8 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Autodiagnóstico Janus — Descubra qué tan disperso está su seguimiento comercial</title>
-<meta name="description" content="En 3 minutos, descubra qué tan cerca está su empresa de perder el control de su red de contactos, y reciba un diagnóstico personalizado en su correo.">
+<title>Autodiagnóstico JANUS — ¿Qué tanto control tenés sobre tu negocio comercial?</title>
+<meta name="description" content="En 3 minutos, descubrí qué tanto control tenés sobre tu negocio comercial — del primer contacto a la factura — y recibí un diagnóstico individualizado con IA en tu correo.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0A0A0B">
 <link rel="canonical" href="https://diagnostico.janus.money/">
@@ -15,18 +15,18 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://diagnostico.janus.money/">
-<meta property="og:title" content="Autodiagnóstico Janus">
-<meta property="og:description" content="En 3 minutos, descubra qué tan disperso está su seguimiento comercial — y qué le está costando no tener un sistema.">
+<meta property="og:title" content="Autodiagnóstico JANUS">
+<meta property="og:description" content="En 3 minutos, descubrí qué tanto control tenés sobre tu negocio comercial — y qué te está costando no tener un sistema.">
 <meta property="og:locale" content="es_CR">
-<meta property="og:site_name" content="Janus">
+<meta property="og:site_name" content="JANUS">
 <meta property="og:image" content="https://diagnostico.janus.money/assets/imagen-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Autodiagnóstico Janus">
-<meta name="twitter:description" content="En 3 minutos, descubra qué tan disperso está su seguimiento comercial.">
+<meta name="twitter:title" content="Autodiagnóstico JANUS">
+<meta name="twitter:description" content="En 3 minutos, descubrí qué tanto control tenés sobre tu negocio comercial.">
 <meta name="twitter:image" content="https://diagnostico.janus.money/assets/imagen-og.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +50,7 @@ body{
 .serif{font-family:'Fraunces',serif;}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
 
-.shell{max-width:920px;margin:0 auto;padding:3rem 1.75rem 5rem;min-height:100vh;display:flex;flex-direction:column;}
+.shell{max-width:960px;margin:0 auto;padding:3rem 1.75rem 5rem;min-height:100vh;display:flex;flex-direction:column;}
 @media(min-width:640px){.shell{padding:4.5rem 2.5rem 6rem;}}
 
 /* HEADER */
@@ -75,7 +75,7 @@ body{
 .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--blanco);box-shadow:0 0 8px 2px rgba(250,250,249,.4);}
 .intro h1{font-weight:700;font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.22;margin-bottom:1.3rem;max-width:30ch;letter-spacing:-0.01em;}
 .intro h1 em{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--gris-700);}
-.intro p{color:var(--gris-700);font-size:1.1rem;max-width:62ch;margin-bottom:1.3rem;}
+.intro p{color:var(--gris-700);font-size:1.15rem;max-width:68ch;margin-bottom:1.3rem;}
 .meta-line{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--gris-500);margin-bottom:2.4rem;}
 .intro-list{margin-bottom:2.6rem;}
 .intro-list li{list-style:none;display:flex;gap:0.7rem;padding:0.7rem 0;color:var(--gris-700);font-size:1rem;border-top:1px solid var(--borde);}
@@ -97,18 +97,18 @@ body{
 .btn[disabled]{opacity:0.4;pointer-events:none;}
 
 /* QUESTION SCREEN */
-.q-cat{font-size:13px;color:var(--gris-500);letter-spacing:0.1em;margin-bottom:1.1rem;text-transform:uppercase;}
-.q-title{font-weight:700;font-size:clamp(1.5rem,4.2vw,2.1rem);line-height:1.4;margin-bottom:2.8rem;max-width:42ch;letter-spacing:-0.01em;}
-.options{display:flex;flex-direction:column;gap:1.1rem;}
+.q-cat{font-size:12.5px;color:var(--gris-500);letter-spacing:0.1em;margin-bottom:0.9rem;text-transform:uppercase;}
+.q-title{font-weight:700;font-size:clamp(1.4rem,4vw,1.9rem);line-height:1.35;margin-bottom:2.2rem;max-width:40ch;letter-spacing:-0.01em;}
+.options{display:flex;flex-direction:column;gap:0.8rem;}
 .opt{
-  text-align:left;background:var(--negro-card);border:1px solid var(--borde);border-radius:8px;
-  padding:1.4rem 1.6rem;color:var(--blanco);font-size:1.08rem;line-height:1.55;cursor:pointer;
+  text-align:left;background:var(--negro-card);border:1px solid var(--borde);border-radius:6px;
+  padding:1.1rem 1.3rem;color:var(--blanco);font-size:1rem;cursor:pointer;
   transition:border-color .15s ease, background .15s ease, transform .1s ease;font-family:'Manrope',sans-serif;
 }
 .opt:hover{border-color:var(--gris-500);background:var(--negro-card-2);}
 .opt.selected{border-color:var(--blanco);background:var(--negro-card-2);}
 .opt:active{transform:scale(0.99);}
-.q-nav{margin-top:2.5rem;}
+.q-nav{margin-top:2rem;}
 
 /* CAPTURE */
 .field{margin-bottom:1.3rem;}
@@ -131,7 +131,7 @@ body{
 .loading-spinner{width:34px;height:34px;border-radius:50%;border:2px solid var(--borde-fuerte);border-top-color:var(--blanco);animation:spin 0.9s linear infinite;margin-bottom:1.75rem;}
 @keyframes spin{to{transform:rotate(360deg);}}
 .loading-title{font-weight:700;font-size:1.25rem;margin-bottom:0.6rem;}
-.loading-sub{color:var(--gris-700);font-size:0.98rem;max-width:38ch;}
+.loading-sub{color:var(--gris-700);font-size:1rem;max-width:52ch;}
 
 /* RESULTS */
 .result-zone{font-size:13px;color:var(--gris-500);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.6rem;}
@@ -143,7 +143,7 @@ body{
 .diag-labels{display:flex;justify-content:space-between;font-size:12px;color:var(--gris-500);letter-spacing:0.02em;}
 .diag-score{margin-top:1.3rem;font-size:0.95rem;color:var(--gris-700);}
 .diag-score strong{color:var(--blanco);}
-.result-p{color:var(--gris-700);font-size:1.05rem;margin-bottom:1.8rem;}
+.result-p{color:var(--gris-700);font-size:1.1rem;margin-bottom:1.8rem;max-width:72ch;}
 .focus-box{background:var(--negro-card);border-left:2px solid var(--blanco);border-radius:0 4px 4px 0;padding:1.6rem 1.8rem;margin-bottom:2rem;}
 .focus-box h3{font-size:12.5px;color:var(--gris-500);letter-spacing:0.1em;margin-bottom:1rem;}
 .focus-item{display:flex;gap:0.8rem;padding:0.7rem 0;font-size:0.98rem;color:var(--blanco);border-top:1px solid var(--borde);}
@@ -159,17 +159,6 @@ body{
 
 footer.note{margin-top:auto;padding-top:3rem;font-size:12px;color:var(--gris-500);}
 footer.note a{color:var(--gris-700);text-decoration:underline;}
-
-/* Ajustes finos para teléfonos angostos (iPhone SE y similares, ~320-390px) */
-@media(max-width:400px){
-  .shell{padding-left:1.25rem;padding-right:1.25rem;}
-  .diag-preview{padding:1.4rem 1.25rem 1.3rem;}
-  .focus-box{padding:1.25rem 1.4rem;}
-  .diag-labels{font-size:10.5px;}
-  .diag-labels span:nth-child(2){display:none;} /* "En transición" se omite; el punto en la barra ya comunica la posición */
-  .opt{padding:1.15rem 1.3rem;font-size:1.02rem;}
-  .btn{padding:0.9rem 1.3rem;font-size:14px;}
-}
 </style>
 </head>
 <body>
@@ -186,20 +175,20 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
 
   <div class="progress-wrap" id="progressWrap">
     <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-    <div class="progress-label" id="progressLabel">1 / 8</div>
+    <div class="progress-label" id="progressLabel">1 / 9</div>
   </div>
 
   <!-- INTRO -->
   <section class="screen active" id="screen-intro">
-    <div class="eyebrow"><span class="dot"></span> Autodiagnóstico Janus</div>
+    <div class="eyebrow"><span class="dot"></span> Autodiagnóstico JANUS</div>
     <div class="intro">
-      <h1>Descubra qué tan cerca está su empresa de <em>perder el control</em> de su red.</h1>
-      <p>Responda 8 preguntas breves sobre cómo gestiona hoy su empresa sus contactos y su proceso comercial. Va a recibir un análisis personalizado a partir de sus respuestas — directo a su correo.</p>
-      <p class="meta-line">3 minutos · Análisis personalizado por correo · Sin compromiso</p>
+      <h1>Descubrí qué tan cerca estás de <em>perder el control</em> de tu negocio.</h1>
+      <p>Respondé 9 preguntas breves sobre cómo gestionás hoy cada relación comercial — del primer contacto a la factura. Vas a recibir un análisis individualizado, generado con IA a partir de tus respuestas — directo a tu correo.</p>
+      <p class="meta-line">3 minutos · Análisis individualizado por correo · Sin compromiso</p>
       <ul class="intro-list">
-        <li><span class="n">01</span> Responda con su situación real, no con la ideal.</li>
+        <li><span class="n">01</span> Respondé con tu situación real, no con la ideal.</li>
         <li><span class="n">02</span> No hay respuestas correctas — solo un punto de partida honesto.</li>
-        <li><span class="n">03</span> Al final, usted decide si quiere conversar sobre su resultado. Sin presión.</li>
+        <li><span class="n">03</span> Al final, decidís si querés conversar sobre tu resultado. Sin presión.</li>
       </ul>
       <button class="btn" id="startBtn">Comenzar mi autodiagnóstico</button>
     </div>
@@ -218,47 +207,47 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
   <!-- CAPTURE -->
   <section class="screen" id="screen-capture">
     <div class="eyebrow"><span class="dot"></span> Último paso</div>
-    <h2 class="q-title" style="max-width:30ch;">¿A quién le preparamos el informe?</h2>
-    <p style="color:var(--gris-700);margin-bottom:1.8rem;max-width:50ch;font-size:1.05rem;">Con esto generamos su análisis personalizado y se lo enviamos por correo.</p>
+    <h2 class="q-title" style="max-width:40ch;">¿A quién le preparamos el informe?</h2>
+    <p style="color:var(--gris-700);margin-bottom:1.8rem;max-width:68ch;font-size:1.1rem;">Con esto generamos tu análisis individualizado y te lo enviamos por correo.</p>
 
     <div class="field" id="field-fName">
       <label for="fName">Nombre y apellido</label>
       <input type="text" id="fName" placeholder="Nombre y apellido" autocomplete="name">
-      <div class="field-error">Ingrese su nombre completo.</div>
+      <div class="field-error">Ingresá tu nombre completo.</div>
     </div>
     <div class="field-row">
       <div class="field" id="field-fEmpresa">
         <label for="fEmpresa">Empresa</label>
-        <input type="text" id="fEmpresa" placeholder="Nombre de su empresa" autocomplete="organization">
-        <div class="field-error">Ingrese el nombre de su empresa.</div>
+        <input type="text" id="fEmpresa" placeholder="Nombre de tu empresa" autocomplete="organization">
+        <div class="field-error">Ingresá el nombre de tu empresa.</div>
       </div>
       <div class="field" id="field-fPuesto">
         <label for="fPuesto">Puesto</label>
-        <input type="text" id="fPuesto" placeholder="Ej. Gerente Comercial" autocomplete="organization-title">
-        <div class="field-error">Ingrese su puesto.</div>
+        <input type="text" id="fPuesto" placeholder="Ej. Consultor independiente" autocomplete="organization-title">
+        <div class="field-error">Ingresá tu puesto.</div>
       </div>
     </div>
     <div class="field" id="field-fCorreo">
       <label for="fCorreo">Correo</label>
-      <input type="email" id="fCorreo" placeholder="su@correo.com" autocomplete="email">
-      <div class="field-error">Ingrese un correo válido.</div>
+      <input type="email" id="fCorreo" placeholder="tu@correo.com" autocomplete="email">
+      <div class="field-error">Ingresá un correo válido.</div>
     </div>
     <div class="field" id="field-fWhatsapp">
       <label for="fWhatsapp">WhatsApp</label>
       <input type="tel" id="fWhatsapp" placeholder="+506 8888-8888" autocomplete="tel">
-      <div class="field-error">Ingrese su número de WhatsApp.</div>
+      <div class="field-error">Ingresá tu número de WhatsApp.</div>
     </div>
 
     <button class="btn btn-block" id="seeResultBtn">Generar mi diagnóstico</button>
-    <p class="capture-note">Sus respuestas son confidenciales y no se comparten con nadie fuera de Janus.</p>
+    <p class="capture-note">Tus respuestas son confidenciales y no se comparten con nadie fuera de JANUS.</p>
   </section>
 
   <!-- LOADING -->
   <section class="screen" id="screen-loading">
     <div class="loading-wrap">
       <div class="loading-spinner"></div>
-      <div class="loading-title">Generando su diagnóstico...</div>
-      <div class="loading-sub">Estamos analizando sus respuestas para armar un informe a su medida. Esto toma unos segundos.</div>
+      <div class="loading-title">Generando tu diagnóstico...</div>
+      <div class="loading-sub">Estamos analizando tus respuestas para armar un informe a tu medida. Esto toma unos segundos.</div>
     </div>
   </section>
 
@@ -276,123 +265,146 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
     </div>
 
     <p class="result-p" id="resParagraph">Párrafo de resultado.</p>
+    <p class="result-p" id="resPerfil" style="color:var(--blanco);"></p>
 
     <div class="focus-box">
-      <h3>SUS FOCOS DE ATENCIÓN PRIORITARIOS</h3>
+      <h3>TUS FOCOS DE ATENCIÓN PRIORITARIOS</h3>
       <div id="resFocusList"></div>
     </div>
 
     <div class="email-note" id="emailNote">
       <span>📩</span>
-      <div><strong>Ya enviamos su informe completo</strong> a su correo, con un análisis más detallado generado especialmente para su situación.</div>
+      <div><strong>Ya enviamos tu informe completo</strong> a tu correo, con un análisis más detallado generado especialmente para tu situación.</div>
     </div>
 
     <div class="result-actions">
       <a href="#" class="btn" id="waResultBtn" target="_blank" rel="noopener">Conversar sobre mi resultado por WhatsApp</a>
-      <a href="https://janus.money/" class="btn-secondary" style="text-align:center;">Volver al sitio de Janus</a>
+      <a href="https://janus.money/" class="btn-secondary" style="text-align:center;">Volver al sitio de JANUS</a>
     </div>
     <div class="restart-link" id="restartBtn">Hacer el autodiagnóstico de nuevo</div>
   </section>
 
-  <footer class="note">Janus · Construido por <a href="https://nxtlvl.today/" target="_blank" rel="noopener">nxt LVL</a> · Herramienta de autodiagnóstico v2</footer>
+  <footer class="note">JANUS · Construido por <a href="https://nxtlvl.today/" target="_blank" rel="noopener">nxt LVL</a> · Herramienta de autodiagnóstico v3</footer>
 </div>
 
 <script>
 (function(){
 
+  // La primera pregunta define el perfil del negocio (no suma puntaje):
+  // orienta la recomendación y le dice a Warren qué tipo de prospecto escribe.
   var QUESTIONS = [
     {
-      cat: "Contactos",
-      q: "¿Qué tan centralizada está la información de contactos en su empresa hoy?",
+      cat: "Tu negocio",
+      perfil: true,
+      q: "¿Cuál de estas frases describe mejor cómo genera ingresos tu negocio?",
       opts: [
-        {t:"Cada persona del equipo maneja los suyos, dispersos en tarjetas, WhatsApp y notas", s:0},
-        {t:"Existe una lista o Excel compartido, pero se actualiza de forma irregular", s:1},
-        {t:"Hay un lugar centralizado, aunque no todos lo consultan por igual", s:2},
-        {t:"Todo el equipo accede a la misma información, actualizada y con contexto completo", s:3}
+        {t:"Vivo de mi red: consigo clientes por referidos, networking y eventos", p:"red"},
+        {t:"Vendo mi tiempo: cobro por hora, por sesión o por caso", p:"tiempo"},
+        {t:"Tengo un equipo comercial que vende conmigo", p:"equipo"},
+        {t:"Una combinación de las anteriores", p:"combinado"}
+      ]
+    },
+    {
+      cat: "Contactos",
+      q: "¿Qué tan fácil es hoy encontrar la información de un contacto que conociste hace tres meses?",
+      opts: [
+        {t:"Tendría que buscar entre tarjetas, WhatsApp y notas sueltas", s:0},
+        {t:"Lo tengo en una lista o Excel que actualizo cuando puedo", s:1},
+        {t:"Lo tengo centralizado, pero me toma tiempo revisarlo", s:2},
+        {t:"Lo encuentro al instante, con todo el contexto", s:3}
       ]
     },
     {
       cat: "Seguimiento",
-      q: "¿Qué tan seguido se pierden oportunidades comerciales por falta de un seguimiento estructurado?",
+      q: "¿Qué tan seguido se te enfría una oportunidad por falta de seguimiento a tiempo?",
       opts: [
-        {t:"Constantemente — no hay un proceso que garantice el seguimiento de cada oportunidad", s:0},
-        {t:"A veces, cuando quien la lleva anda muy ocupado", s:1},
-        {t:"Rara vez — el equipo se organiza para estar encima", s:2},
-        {t:"Nunca — existe un sistema que avisa antes de que una oportunidad se enfríe", s:3}
-      ]
-    },
-    {
-      cat: "Forecast",
-      q: "¿La empresa puede proyectar con certeza cuánto va a facturar el próximo trimestre?",
-      opts: [
-        {t:"No — depende de la intuición de quien lleva cada cuenta", s:0},
-        {t:"Hay una idea general, sin datos consolidados", s:1},
-        {t:"Se puede estimar, aunque toma esfuerzo reunir la información", s:2},
-        {t:"Sí, existe una cifra real, consolidada y actualizada", s:3}
+        {t:"Constantemente — pierdo la cuenta de a quién le debo escribir", s:0},
+        {t:"A veces, cuando ando muy ocupado", s:1},
+        {t:"Rara vez, trato de estar encima", s:2},
+        {t:"Nunca — tengo un sistema que me avisa antes", s:3}
       ]
     },
     {
       cat: "Pipeline",
-      q: "¿Qué tan clara está, para todo el equipo, la etapa en la que está cada oportunidad activa?",
+      q: "¿Qué tan claro tenés en qué etapa está cada oportunidad activa ahora mismo?",
       opts: [
-        {t:"No existe un registro de etapas — cada quien lo maneja a su manera", s:0},
-        {t:"Cada persona lo tiene en su cabeza, sin un lugar compartido", s:1},
-        {t:"Se anota en algún lugar, pero no siempre está actualizado", s:2},
-        {t:"Hay visibilidad completa y compartida por todo el equipo", s:3}
+        {t:"No llevo un registro de etapas", s:0},
+        {t:"Lo tengo en la cabeza, sin escribirlo en ningún lado", s:1},
+        {t:"Lo anoto, pero no siempre está actualizado", s:2},
+        {t:"Tengo visibilidad completa y actualizada", s:3}
       ]
     },
     {
-      cat: "Eficiencia operativa",
-      q: "¿Cuánto tiempo del equipo se va, cada semana, en organizar contactos y seguimientos a mano?",
+      cat: "Cotizaciones",
+      q: "Cuando enviás una cotización, ¿qué pasa después?",
       opts: [
-        {t:"Varias horas entre todos, y aun así se escapan cosas", s:0},
-        {t:"Un par de horas, repartidas entre WhatsApp y notas sueltas", s:1},
-        {t:"Poco tiempo — ya hay cierto orden", s:2},
-        {t:"Casi nada — es prácticamente automático", s:3}
+        {t:"Queda en mi correo y a veces se me olvida darle seguimiento", s:0},
+        {t:"La reviso cuando me acuerdo", s:1},
+        {t:"Llevo un control, pero en un archivo aparte", s:2},
+        {t:"Se convierte en una oportunidad con fecha de seguimiento", s:3}
       ]
     },
     {
-      cat: "Referidos",
-      q: "¿La empresa tiene visibilidad clara de qué fuentes le generan los mejores referidos?",
+      cat: "Tiempo sin cobrar",
+      q: "¿Qué tan seguido trabajás para un cliente algo que nunca llega a cobrarse — una llamada que se alargó, una consulta por WhatsApp, un ajuste extra?",
       opts: [
-        {t:"No hay forma de saberlo con los datos actuales", s:0},
-        {t:"Hay una idea vaga, sin datos que la respalden", s:1},
-        {t:"Se podría averiguar revisando notas dispersas", s:2},
-        {t:"Sí, existe esa visibilidad clara y consolidada", s:3}
+        {t:"Todo el tiempo — no llevo control de eso", s:0},
+        {t:"Con frecuencia, pero no sé cuánto suma", s:1},
+        {t:"A veces, y lo tengo más o menos medido", s:2},
+        {t:"Casi nunca — registro todo lo que trabajo", s:3}
       ]
     },
     {
-      cat: "Contratos recurrentes",
-      q: "Si la empresa tiene clientes con contratos o servicios recurrentes, ¿existe un control de cuándo vence cada uno?",
+      cat: "Transparencia al facturar",
+      q: "Cuando facturás, ¿tu cliente sabe exactamente qué le estás cobrando?",
       opts: [
-        {t:"No se sabe hasta que el cliente pregunta", s:0},
-        {t:"Hay una idea aproximada", s:1},
-        {t:"Se revisa manualmente de vez en cuando", s:2},
-        {t:"Existen alertas claras de cada vencimiento", s:3}
+        {t:"Solo ve un monto total", s:0},
+        {t:"Le doy una descripción general", s:1},
+        {t:"Le envío un detalle, pero me toma tiempo armarlo", s:2},
+        {t:"Recibe un reporte detallado que respalda cada cobro", s:3}
       ]
     },
     {
-      cat: "Continuidad",
-      q: "Si la persona que hoy lleva el seguimiento comercial se ausentara dos semanas, ¿el proceso seguiría funcionando?",
+      cat: "Proyección de ingresos",
+      q: "¿Podés decir con certeza cuánto vas a facturar el próximo trimestre?",
       opts: [
-        {t:"No — todo depende de que esa persona esté presente", s:0},
-        {t:"Con tropiezos, probablemente", s:1},
-        {t:"Bastante bien, con alguna excepción", s:2},
-        {t:"Sí, sin ningún problema — no depende de una sola persona", s:3}
+        {t:"No tengo idea, es pura intuición", s:0},
+        {t:"Tengo una idea general, nada preciso", s:1},
+        {t:"Puedo estimarlo con algo de esfuerzo", s:2},
+        {t:"Sí, con una cifra real y actualizada", s:3}
+      ]
+    },
+    {
+      cat: "Crecimiento",
+      q: "Si mañana tu negocio creciera al doble, ¿tu forma actual de trabajar lo soportaría?",
+      opts: [
+        {t:"No — ya hoy estoy al límite", s:0},
+        {t:"Con mucho esfuerzo y desorden", s:1},
+        {t:"Bastante bien, con algunos ajustes", s:2},
+        {t:"Sí, tengo un sistema que crece conmigo", s:3}
       ]
     }
   ];
 
   var FOCUS_SUGGESTIONS = {
-    "Contactos": "Centralizar la información de contactos en un solo sistema accesible para todo el equipo.",
-    "Seguimiento": "Un proceso de seguimiento con alertas automáticas, que no dependa de la memoria de una sola persona.",
-    "Forecast": "Una proyección de facturación consolidada y visible para quien toma decisiones.",
-    "Pipeline": "Un tablero compartido donde todo el equipo vea en qué etapa está cada oportunidad.",
-    "Eficiencia operativa": "Automatizar el registro de contactos y seguimientos para liberar tiempo del equipo.",
-    "Referidos": "Un sistema que identifique automáticamente qué fuentes generan más negocio.",
-    "Contratos recurrentes": "Alertas de vencimiento centralizadas, para no depender de que alguien lo recuerde.",
-    "Continuidad": "Un sistema que sostenga la operación comercial sin depender de una sola persona."
+    "Contactos": "Centralizar tus contactos en un solo lugar, con escaneo de tarjetas por IA y formulario QR para eventos.",
+    "Seguimiento": "Que cada contacto y oportunidad tenga una próxima acción con fecha — y que el sistema te avise antes de que se enfríe.",
+    "Pipeline": "Ver en un tablero en qué etapa está cada oportunidad, y cuánto tiempo lleva ahí.",
+    "Cotizaciones": "Que cada cotización enviada se convierta automáticamente en una oportunidad con seguimiento.",
+    "Tiempo sin cobrar": "Registrar el tiempo por cliente y por caso, para que cada minuto trabajado llegue a la factura.",
+    "Transparencia al facturar": "Respaldar cada factura con un reporte que detalle el trabajo realizado.",
+    "Proyección de ingresos": "Ver tu facturación proyectada a doce meses, separando lo puntual de lo recurrente.",
+    "Crecimiento": "Una estructura que crezca con tu negocio: usuarios, carteras y métricas por persona."
   };
+
+  var PERFIL_TEXTO = {
+    red: "Por cómo describiste tu negocio, tu mayor palanca está en el seguimiento: que ninguna relación se enfríe entre el primer café y la cotización.",
+    tiempo: "Por cómo describiste tu negocio, tu mayor palanca está en el tiempo: que cada minuto que trabajás para un cliente llegue a la factura, con un reporte que lo respalde.",
+    equipo: "Por cómo describiste tu negocio, tu mayor palanca está en la estructura: que cada vendedor tenga su cartera y vos tengas visibilidad de todo el equipo.",
+    combinado: "Por cómo describiste tu negocio, necesitás el ciclo completo: del primer contacto a la factura, en un solo sistema."
+  };
+
+  var PERFIL_NOMBRE = { red: "Vivo de mi red", tiempo: "Vendo mi tiempo", equipo: "Tengo un equipo comercial", combinado: "Una combinación" };
 
   var answers = new Array(QUESTIONS.length).fill(null);
   var currentQ = 0;
@@ -494,7 +506,12 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
     var totalScore = 0;
     var catScores = [];
     var respuestas = [];
+    var perfil = null;
     answers.forEach(function(a, i){
+      if(QUESTIONS[i].perfil){
+        perfil = a === null ? null : QUESTIONS[i].opts[a].p;
+        return;
+      }
       var s = a === null ? 0 : QUESTIONS[i].opts[a].s;
       totalScore += s;
       catScores.push({cat: QUESTIONS[i].cat, score: s});
@@ -505,22 +522,23 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
         puntaje: s
       });
     });
-    var maxScore = QUESTIONS.length * 3;
+    var preguntasConPuntaje = QUESTIONS.filter(function(q){ return !q.perfil; }).length;
+    var maxScore = preguntasConPuntaje * 3;
     var pct = Math.round((totalScore / maxScore) * 100);
 
     var zone, zoneLabel, title, paragraph;
     if(pct < 34){
       zone = 'disperso'; zoneLabel = 'Zona: Disperso';
-      title = 'Tu negocio está operando con un nivel alto de dispersión y riesgo.';
-      paragraph = 'Gran parte del seguimiento comercial depende hoy de la memoria de personas puntuales, y no de un sistema compartido. No es un juicio — es la fotografía del momento en que se encuentran muchas empresas pequeñas antes de ordenar esta parte del negocio.';
+      title = 'Tu gestión comercial está operando con un nivel alto de dispersión.';
+      paragraph = 'Gran parte de tu negocio comercial depende hoy de la memoria y no de un sistema: el seguimiento, lo que cotizaste, el tiempo que le dedicás a cada cliente. No es un juicio — es la fotografía del momento en que se encuentran muchos empresarios y profesionales antes de ordenar esta parte del negocio.';
     } else if(pct < 67){
       zone = 'transicion'; zoneLabel = 'Zona: En transición';
-      title = 'La empresa ya dejó atrás el desorden total, pero todavía hay puntos ciegos.';
-      paragraph = 'Hay partes del proceso comercial que ya están razonablemente bajo control, y otras que todavía dependen de que una persona puntual se acuerde. Si la operación sigue creciendo al ritmo actual, esos puntos ciegos se vuelven más caros de resolver.';
+      title = 'Ya dejaste atrás el desorden total, pero todavía hay puntos ciegos.';
+      paragraph = 'Hay partes de tu proceso comercial que ya están razonablemente bajo control, y otras que todavía dependen de que te acordés. Si tu negocio sigue creciendo al ritmo actual, esos puntos ciegos se vuelven más caros de resolver.';
     } else {
       zone = 'control'; zoneLabel = 'Zona: Con control';
-      title = 'Tu empresa tiene un nivel de control superior al de la mayoría de las pymes de servicios.';
-      paragraph = 'El siguiente paso ya no es urgente — es estratégico: sostener ese orden para que el negocio pueda crecer, incluso sumando más gente al equipo, sin que el seguimiento se vuelva un cuello de botella.';
+      title = 'Tenés un nivel de control comercial superior al de la mayoría de los negocios de tu tamaño.';
+      paragraph = 'El siguiente paso ya no es urgente — es estratégico: sostener ese orden para que tu negocio pueda crecer sin que el seguimiento se vuelva un cuello de botella.';
     }
 
     catScores.sort(function(a,b){ return a.score - b.score; });
@@ -535,6 +553,7 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
     document.getElementById('resZoneLabel').textContent = zoneLabel;
     document.getElementById('resTitle').innerHTML = title;
     document.getElementById('resParagraph').textContent = paragraph;
+    document.getElementById('resPerfil').textContent = perfil ? PERFIL_TEXTO[perfil] : '';
     document.getElementById('resScoreText').innerHTML = 'Puntaje: <strong>' + totalScore + ' / ' + maxScore + '</strong> — ' + pct + '%';
 
     var marker = document.getElementById('resMarker');
@@ -547,7 +566,7 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
       var okDiv = document.createElement('div');
       okDiv.className = 'focus-item';
       okDiv.style.borderTop = 'none';
-      okDiv.innerHTML = '<div class="txt"><strong>No encontramos focos críticos en sus respuestas.</strong><span>Ya está manejando esta parte del negocio con solidez. El siguiente paso es mantenerlo así mientras crece.</span></div>';
+      okDiv.innerHTML = '<div class="txt"><strong>No encontramos focos críticos en tus respuestas.</strong><span>Ya estás manejando esta parte del negocio con solidez. El siguiente paso es mantenerlo así mientras creces.</span></div>';
       focusList.appendChild(okDiv);
     } else {
       focusCats.forEach(function(cat, i){
@@ -560,7 +579,8 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
 
     var focusText = focusCats.length ? focusCats.join(', ') : 'Sin focos críticos identificados';
     var waText = 'Hola, soy ' + contact.nombre + ' (' + contact.puesto + ' en ' + contact.empresa + ').\n\n' +
-      'Acabo de completar el autodiagnóstico de Janus.\n\n' +
+      'Acabo de completar el autodiagnóstico de JANUS.\n\n' +
+      (perfil ? 'Mi negocio: ' + PERFIL_NOMBRE[perfil] + '\n' : '') +
       'Resultado: ' + zoneLabel + ' (' + totalScore + '/' + maxScore + ')\n' +
       'Áreas de mayor atención: ' + focusText + '\n\n' +
       'Me gustaría conversar sobre mi resultado.';
@@ -571,7 +591,7 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
     // Disparar en segundo plano la generación del informe con IA + envío de correos.
     // Si esto falla, el resultado en pantalla ya se mostró igual — no depende de esto.
     var emailNote = document.getElementById('emailNote');
-    emailNote.querySelector('div').innerHTML = '<strong>Estamos generando su informe completo</strong> — le va a llegar por correo en los próximos minutos.';
+    emailNote.querySelector('div').innerHTML = '<strong>Estamos generando tu informe completo</strong> — te va a llegar por correo en los próximos minutos.';
 
     fetch('/api/diagnostico', {
       method: 'POST',
@@ -584,16 +604,17 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
         porcentaje: pct,
         zona: zoneLabel,
         titulo: title,
-        focos: focusCats
+        focos: focusCats,
+        perfil: perfil ? PERFIL_NOMBRE[perfil] : null
       })
     }).then(function(res){
       if(res.ok){
-        emailNote.querySelector('div').innerHTML = '<strong>Ya enviamos su informe completo</strong> a ' + contact.correo + ', con un análisis más detallado generado especialmente para su situación.';
+        emailNote.querySelector('div').innerHTML = '<strong>Ya enviamos tu informe completo</strong> a ' + contact.correo + ', con un análisis más detallado generado especialmente para tu situación.';
       } else {
-        emailNote.querySelector('div').innerHTML = 'Su resultado ya está listo arriba. Tuvimos un problema enviando el correo — si no le llega en unos minutos, escríbanos por WhatsApp.';
+        emailNote.querySelector('div').innerHTML = 'Tu resultado ya está listo arriba. Tuvimos un problema enviando el correo — si no te llega en unos minutos, escribinos por WhatsApp.';
       }
     }).catch(function(){
-      emailNote.querySelector('div').innerHTML = 'Su resultado ya está listo arriba. Tuvimos un problema enviando el correo — si no le llega en unos minutos, escríbanos por WhatsApp.';
+      emailNote.querySelector('div').innerHTML = 'Tu resultado ya está listo arriba. Tuvimos un problema enviando el correo — si no te llega en unos minutos, escribinos por WhatsApp.';
     });
   });
 
