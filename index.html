@@ -7,10 +7,10 @@
 <title>Autodiagnóstico JANUS — ¿Qué tanto control tenés sobre tu negocio comercial?</title>
 <meta name="description" content="En 3 minutos, descubrí qué tanto control tenés sobre tu negocio comercial — del primer contacto a la factura — y recibí un diagnóstico individualizado con IA en tu correo.">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#0A0A0B">
+<meta name="theme-color" content="#080B0F">
 <link rel="canonical" href="https://diagnostico.janus.money/">
 <link rel="icon" type="image/png" href="/assets/favicon.png">
-<link rel="apple-touch-icon" href="/assets/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -30,24 +30,24 @@
 <meta name="twitter:image" content="https://diagnostico.janus.money/assets/imagen-og.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --negro:#0A0A0B;
-  --negro-card:#131315;
-  --negro-card-2:#0F0F11;
-  --blanco:#FAFAF9;
-  --gris-700:#ACACB0;
-  --gris-500:#7C7C80;
-  --borde:#232326;
-  --borde-fuerte:#333336;
+  --negro:#080B0F;
+  --negro-card:#0E1822;
+  --negro-card-2:#080B0F;
+  --blanco:#F7F9FA;
+  --gris-700:#8B98A5;
+  --gris-500:#8B98A5;
+  --borde:#28343E;
+  --borde-fuerte:#28343E;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   background:var(--negro);color:var(--blanco);font-family:'Manrope',sans-serif;
   line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100vh;font-size:17px;
 }
-.serif{font-family:'Fraunces',serif;}
+.serif{font-family:'Manrope',sans-serif;}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
 
 .shell{max-width:960px;margin:0 auto;padding:3rem 1.75rem 5rem;min-height:100vh;display:flex;flex-direction:column;}
@@ -63,7 +63,7 @@ body{
 .progress-wrap.show{display:flex;}
 .progress-track{flex:1;height:3px;background:var(--borde);border-radius:4px;overflow:hidden;}
 .progress-fill{height:100%;width:0%;background:var(--blanco);transition:width .4s ease;}
-.progress-label{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gris-500);white-space:nowrap;}
+.progress-label{font-family:'Manrope',sans-serif;font-size:12px;color:var(--gris-500);white-space:nowrap;}
 
 /* SCREENS */
 .screen{display:none;flex:1;flex-direction:column;}
@@ -74,13 +74,13 @@ body{
 .eyebrow{font-size:13px;color:var(--gris-500);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.6rem;}
 .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--blanco);box-shadow:0 0 8px 2px rgba(250,250,249,.4);}
 .intro h1{font-weight:700;font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.22;margin-bottom:1.3rem;max-width:30ch;letter-spacing:-0.01em;}
-.intro h1 em{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--gris-700);}
+.intro h1 em{font-family:'Manrope',sans-serif;font-style:italic;font-weight:400;color:var(--gris-700);}
 .intro p{color:var(--gris-700);font-size:1.15rem;max-width:68ch;margin-bottom:1.3rem;}
-.meta-line{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--gris-500);margin-bottom:2.4rem;}
+.meta-line{font-family:'Manrope',sans-serif;font-size:12.5px;color:var(--gris-500);margin-bottom:2.4rem;}
 .intro-list{margin-bottom:2.6rem;}
 .intro-list li{list-style:none;display:flex;gap:0.7rem;padding:0.7rem 0;color:var(--gris-700);font-size:1rem;border-top:1px solid var(--borde);}
 .intro-list li:first-child{border-top:none;}
-.intro-list li .n{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gris-500);flex-shrink:0;padding-top:2px;}
+.intro-list li .n{font-family:'Manrope',sans-serif;font-size:12px;color:var(--gris-500);flex-shrink:0;padding-top:2px;}
 
 /* BUTTONS */
 .btn{
@@ -136,7 +136,7 @@ body{
 /* RESULTS */
 .result-zone{font-size:13px;color:var(--gris-500);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.6rem;}
 .result-title{font-weight:700;font-size:clamp(1.7rem,4.6vw,2.3rem);line-height:1.25;margin-bottom:1.4rem;letter-spacing:-0.01em;}
-.result-title em{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--gris-700);}
+.result-title em{font-family:'Manrope',sans-serif;font-style:italic;font-weight:400;color:var(--gris-700);}
 .diag-preview{background:var(--negro-card);border:1px solid var(--borde-fuerte);border-radius:6px;padding:2rem 2rem 1.75rem;margin-bottom:1.8rem;}
 .diag-track{position:relative;height:1px;background:linear-gradient(90deg,var(--gris-500),var(--blanco),var(--gris-500));margin:1.5rem 0;}
 .diag-marker{position:absolute;top:50%;width:9px;height:9px;border-radius:50%;background:var(--blanco);box-shadow:0 0 0 5px var(--negro-card),0 0 16px 3px rgba(250,250,249,.5);left:0;transform:translate(-50%,-50%);transition:left 1s cubic-bezier(.2,.8,.2,1);}
@@ -148,7 +148,7 @@ body{
 .focus-box h3{font-size:12.5px;color:var(--gris-500);letter-spacing:0.1em;margin-bottom:1rem;}
 .focus-item{display:flex;gap:0.8rem;padding:0.7rem 0;font-size:0.98rem;color:var(--blanco);border-top:1px solid var(--borde);}
 .focus-item:first-of-type{border-top:none;}
-.focus-item .num{font-family:'JetBrains Mono',monospace;color:var(--gris-500);flex-shrink:0;}
+.focus-item .num{font-family:'Manrope',sans-serif;color:var(--gris-500);flex-shrink:0;}
 .focus-item .txt strong{display:block;margin-bottom:0.2rem;}
 .focus-item .txt span{color:var(--gris-700);font-size:0.92rem;}
 .email-note{display:flex;gap:0.7rem;align-items:flex-start;background:var(--negro-card-2);border:1px solid var(--borde);border-radius:6px;padding:1.1rem 1.3rem;margin-bottom:1.8rem;font-size:0.92rem;color:var(--gris-700);}
@@ -159,18 +159,18 @@ body{
 
 footer.note{margin-top:auto;padding-top:3rem;font-size:12px;color:var(--gris-500);}
 footer.note a{color:var(--gris-700);text-decoration:underline;}
+
+/* JANUS V2 / presentation layer — scoring and submission logic unchanged */
+:root{--cyan:#19D9E6;--ice:#A5EDF2}body{font-family:Manrope,Arial,sans-serif;background:radial-gradient(ellipse at 90% 0%,#0E1822,#080B0F 55%)}.shell{max-width:1000px}.brand{gap:0;padding-bottom:25px;border-bottom:1px solid #28343E;margin-bottom:35px}.v2-wordmark{display:inline-flex!important;align-items:center;font-size:30px!important;font-weight:500!important;letter-spacing:.045em!important;line-height:1}.v2-wordmark svg{width:.64em!important;height:.74em!important;margin:0 .045em 0 .02em;fill:none;stroke:#19D9E6;stroke-width:5;stroke-linecap:square;overflow:visible}.eyebrow{font-size:10px;letter-spacing:.13em;color:#A5EDF2}.eyebrow .dot{background:#19D9E6;box-shadow:none}.intro h1{font-size:clamp(38px,5.5vw,62px);font-weight:300;line-height:1.12;letter-spacing:-.04em;max-width:26ch}.intro h1 em{font-style:normal;color:#A5EDF2;font-weight:300}.intro p{font-size:17px}.meta-line{font-size:11px}.intro-list{margin-top:25px}.intro-list li{font-size:15px}.intro-list li .n{color:#A5EDF2}.btn{background:#19D9E6;color:#080B0F;border-color:#19D9E6;font-weight:500;min-height:48px;border-radius:3px}.btn-secondary{background:none;border-color:#28343E;color:#F7F9FA;font-weight:500}.progress-fill{background:#19D9E6}.progress-label{font-size:11px}.q-title{font-weight:400;font-size:clamp(26px,3.8vw,38px);letter-spacing:-.025em;line-height:1.25}.q-cat{color:#A5EDF2;font-size:10px}.opt{border-radius:3px;min-height:60px;padding:20px 22px;font-size:16px;line-height:1.55;background:#0E1822}.opt:hover,.opt.selected{border-color:#19D9E6;background:#0E1822}.opt.selected{border-left:3px solid #19D9E6}.field label{font-size:12px;color:#F7F9FA;font-weight:500}.field input{background:#0E1822;border-radius:3px;min-height:48px}.field input:focus{border-color:#19D9E6}.field input::placeholder{color:#8B98A5;opacity:1}.loading-spinner{border-top-color:#19D9E6}.loading-title{font-weight:500}.result-title{font-weight:300;font-size:clamp(32px,4.5vw,48px);letter-spacing:-.035em;line-height:1.2}.result-title em{font-style:normal;color:#A5EDF2}.result-zone{font-size:10px;color:#A5EDF2}.diag-preview{background:#0E1822;border-radius:3px;padding:30px}.diag-track{background:#8B98A5}.diag-marker{background:#19D9E6;box-shadow:0 0 0 5px #0E1822}.diag-score strong{font-weight:500;color:#A5EDF2}.result-p{font-size:17px;line-height:1.8}.focus-box{border-left-color:#19D9E6;border-radius:0;background:#0E1822}.focus-box h3{font-size:10px;font-weight:500}.focus-item .num{color:#A5EDF2}.focus-item .txt strong{font-weight:500}.email-note{border-radius:3px}.email-note strong{font-weight:500}.result-actions .btn{white-space:normal;text-align:center}.restart-link{padding:14px}.note{font-size:11px!important}button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #19D9E6;outline-offset:4px}::selection{background:#19D9E6;color:#080B0F}
+@media(max-width:600px){.shell{padding:28px 20px 40px}.brand{margin-bottom:28px;padding-bottom:20px}.intro h1{font-size:39px}.intro p{font-size:16px}.intro-list li{font-size:14px}.q-title{font-size:27px}.opt{padding:17px;font-size:15px}.diag-preview{padding:23px 18px}.diag-labels{font-size:10px;gap:10px}.focus-box{padding:24px 20px}.result-title{font-size:33px}.result-p{font-size:16px}.btn{padding:15px 18px}.field-row>*{min-width:0}.focus-item .txt{min-width:0}.email-note{overflow-wrap:anywhere}.progress-wrap{gap:15px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
 </style>
 </head>
 <body>
 
 <div class="shell">
-  <div class="brand">
-    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M10 8H24V40H10" stroke="#FAFAF9" stroke-width="1.6" fill="none"/>
-      <path d="M38 8H24V40H38" stroke="#FAFAF9" stroke-width="1.6" fill="none" opacity="0.35"/>
-      <circle cx="24" cy="24" r="2.5" fill="#FAFAF9"/>
-    </svg>
-    <span>JANUS</span>
+  <div class="brand"><span class="v2-wordmark" role="img" aria-label="JANUS">J<svg viewBox="0 0 46 52" aria-hidden="true"><path d="M4 48L23 5L42 48"/></svg>NUS</span>
   </div>
 
   <div class="progress-wrap" id="progressWrap">

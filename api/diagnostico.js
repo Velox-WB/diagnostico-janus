@@ -180,16 +180,16 @@ function renderInformeHtml(informeCrudo) {
       const items = listaTexto.split(/\n(?=\s*\d\.\s)/).map(item => item.replace(/^\s*\d\.\s*/, '').trim());
       const itemsHtml = items.map((item, idx) => `
         <tr>
-          <td style="width:26px;vertical-align:top;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;color:#FAFAF9;padding:6px 8px 6px 0;">${idx + 1}.</td>
-          <td style="vertical-align:top;font-family:Arial,sans-serif;font-size:15px;line-height:1.7;color:#d8d8da;padding:6px 0;">${item}</td>
+          <td style="width:26px;vertical-align:top;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:15px;font-weight:bold;color:#F7F9FA;padding:6px 8px 6px 0;">${idx + 1}.</td>
+          <td style="vertical-align:top;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:15px;line-height:1.7;color:#F7F9FA;padding:6px 0;">${item}</td>
         </tr>`).join('');
 
-      const introHtml = intro ? `<p style="font-family:Arial,sans-serif;font-size:15px;line-height:1.7;color:#d8d8da;margin:${marginTop} 0 10px;">${intro}</p>` : '';
+      const introHtml = intro ? `<p style="font-family:Manrope,Arial,Helvetica,sans-serif;font-size:15px;line-height:1.7;color:#F7F9FA;margin:${marginTop} 0 10px;">${intro}</p>` : '';
       const listMarginTop = intro ? '0' : marginTop;
       return `${introHtml}<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:${listMarginTop} 0 16px;">${itemsHtml}</table>`;
     }
 
-    return `<p style="font-family:Arial,sans-serif;font-size:15px;line-height:1.7;color:#d8d8da;margin:${marginTop} 0 16px;">${p}</p>`;
+    return `<p style="font-family:Manrope,Arial,Helvetica,sans-serif;font-size:15px;line-height:1.7;color:#F7F9FA;margin:${marginTop} 0 16px;">${p}</p>`;
   }).join('');
 }
 
@@ -204,7 +204,7 @@ function construirBarraUmbral(porcentaje, puntajeTotal, puntajeMax) {
   return `
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:20px 0 6px;">
     <tr>
-      <td style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#7C7C80;padding-bottom:14px;">
+      <td style="font-family:Manrope,Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8B98A5;padding-bottom:14px;">
         TU POSICIÓN EN LA ESCALA JANUS
       </td>
     </tr>
@@ -212,13 +212,13 @@ function construirBarraUmbral(porcentaje, puntajeTotal, puntajeMax) {
       <td>
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
           <tr>
-            <td style="width:${izquierda}%;"><div style="height:1px;line-height:1px;font-size:1px;background-color:#5A5A5E;">&nbsp;</div></td>
+            <td style="width:${izquierda}%;"><div style="height:1px;line-height:1px;font-size:1px;background-color:#8B98A5;">&nbsp;</div></td>
             <td style="width:12px;">
               <table role="presentation" cellpadding="0" cellspacing="0" align="center"><tr>
-                <td style="width:9px;height:9px;line-height:9px;font-size:1px;background-color:#FAFAF9;border-radius:50%;">&nbsp;</td>
+                <td style="width:9px;height:9px;line-height:9px;font-size:1px;background-color:#19D9E6;border-radius:50%;">&nbsp;</td>
               </tr></table>
             </td>
-            <td style="width:${derecha}%;"><div style="height:1px;line-height:1px;font-size:1px;background-color:#5A5A5E;">&nbsp;</div></td>
+            <td style="width:${derecha}%;"><div style="height:1px;line-height:1px;font-size:1px;background-color:#8B98A5;">&nbsp;</div></td>
           </tr>
         </table>
       </td>
@@ -227,16 +227,16 @@ function construirBarraUmbral(porcentaje, puntajeTotal, puntajeMax) {
       <td style="padding-top:10px;">
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
           <tr>
-            <td style="text-align:left;font-family:Arial,sans-serif;font-size:11px;color:#7C7C80;">Disperso</td>
-            <td style="text-align:center;font-family:Arial,sans-serif;font-size:11px;color:#7C7C80;">En transición</td>
-            <td style="text-align:right;font-family:Arial,sans-serif;font-size:11px;color:#7C7C80;">Con control</td>
+            <td style="text-align:left;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:11px;color:#8B98A5;">Disperso</td>
+            <td style="text-align:center;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:11px;color:#8B98A5;">En transición</td>
+            <td style="text-align:right;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:11px;color:#8B98A5;">Con control</td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
-      <td style="padding-top:12px;font-family:Arial,sans-serif;font-size:13px;color:#ACACB0;">
-        Puntaje: <strong style="color:#FAFAF9;">${escapeHtml(puntajeTotal)} / ${escapeHtml(puntajeMax)}</strong> — ${escapeHtml(porcentaje)}%
+      <td style="padding-top:12px;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:13px;color:#8B98A5;">
+        Puntaje: <strong style="color:#F7F9FA;">${escapeHtml(puntajeTotal)} / ${escapeHtml(puntajeMax)}</strong> — ${escapeHtml(porcentaje)}%
       </td>
     </tr>
   </table>`;
@@ -247,12 +247,12 @@ function construirBarraUmbral(porcentaje, puntajeTotal, puntajeMax) {
 // ─────────────────────────────────────────────
 function emailShell(innerHtml) {
   return `
-  <div style="background-color:#0A0A0B;padding:32px 16px;font-family:Arial,sans-serif;">
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;background-color:#131315;border:1px solid #232326;border-radius:8px;overflow:hidden;">
+  <div style="background-color:#080B0F;padding:32px 16px;font-family:Manrope,Arial,Helvetica,sans-serif;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;margin:0 auto;background-color:#0E1822;border:1px solid #28343E;border-radius:8px;overflow:hidden;">
       <tr>
-        <td style="padding:28px 32px 20px;border-bottom:1px solid #232326;">
-          <span style="font-family:Arial,sans-serif;font-weight:bold;font-size:15px;color:#FAFAF9;letter-spacing:1px;">JANUS</span>
-          <span style="font-family:Arial,sans-serif;font-size:11px;color:#7C7C80;letter-spacing:0.5px;"> · El Sistema Operativo Comercial</span>
+        <td style="padding:28px 32px 20px;border-bottom:1px solid #28343E;">
+          <img src="https://diagnostico.janus.money/assets/wordmark-email.png" width="130" height="43" alt="JANUS" style="display:block;border:0;color:#F7F9FA;font-family:Arial,sans-serif;font-size:22px;">
+          <span style="font-family:Manrope,Arial,Helvetica,sans-serif;font-size:11px;color:#8B98A5;letter-spacing:0.5px;display:block;padding-top:10px;">Claridad para dirigir el negocio.</span>
         </td>
       </tr>
       <tr>
@@ -261,8 +261,8 @@ function emailShell(innerHtml) {
         </td>
       </tr>
       <tr>
-        <td style="padding:20px 32px;border-top:1px solid #232326;font-family:Arial,sans-serif;font-size:11px;color:#7C7C80;">
-          JANUS · Construido por nxt LVL · <a href="https://janus.money" style="color:#ACACB0;">janus.money</a>
+        <td style="padding:20px 32px;border-top:1px solid #28343E;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:11px;color:#8B98A5;">
+          JANUS · Construido por nxt LVL · <a href="https://janus.money" style="color:#8B98A5;">janus.money</a>
         </td>
       </tr>
     </table>
@@ -275,25 +275,25 @@ function construirEmailProspecto({ contacto, informe, porcentaje, zona, titulo, 
   const primerNombre = escapeHtml(String(contacto.nombre).split(' ')[0]);
 
   const focosHtml = focos.length ? `
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#0F0F11;border-left:2px solid #FAFAF9;border-radius:0 4px 4px 0;margin:24px 0;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#080B0F;border-left:2px solid #19D9E6;border-radius:0 4px 4px 0;margin:24px 0;">
       <tr><td style="padding:20px 24px;">
-        <div style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#7C7C80;margin-bottom:12px;">TUS FOCOS DE ATENCIÓN PRIORITARIOS</div>
-        ${focos.map((f, i) => `<div style="font-family:Arial,sans-serif;font-size:14px;color:#FAFAF9;padding:6px 0;">0${i + 1} — ${escapeHtml(f)}</div>`).join('')}
+        <div style="font-family:Manrope,Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8B98A5;margin-bottom:12px;">TUS FOCOS DE ATENCIÓN PRIORITARIOS</div>
+        ${focos.map((f, i) => `<div style="font-family:Manrope,Arial,Helvetica,sans-serif;font-size:14px;color:#F7F9FA;padding:6px 0;">0${i + 1} — ${escapeHtml(f)}</div>`).join('')}
       </td></tr>
     </table>` : '';
 
   const waText = encodeURIComponent(`Hola, soy ${contacto.nombre} (${contacto.puesto} en ${contacto.empresa}). Acabo de recibir mi diagnóstico de JANUS (${zona}) y quiero conversar sobre mi resultado.`);
 
   return emailShell(`
-    <p style="font-family:Arial,sans-serif;font-size:14px;color:#ACACB0;margin:0 0 20px;">Hola ${primerNombre},</p>
-    <div style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#7C7C80;margin-bottom:8px;">${escapeHtml(zona)}</div>
-    <h1 style="font-family:Arial,sans-serif;font-size:24px;color:#FAFAF9;margin:0 0 20px;line-height:1.3;">${escapeHtml(titulo)}</h1>
+    <p style="font-family:Manrope,Arial,Helvetica,sans-serif;font-size:14px;color:#8B98A5;margin:0 0 20px;">Hola ${primerNombre},</p>
+    <div style="font-family:Manrope,Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8B98A5;margin-bottom:8px;">${escapeHtml(zona)}</div>
+    <h1 style="font-family:Manrope,Arial,Helvetica,sans-serif;font-size:26px;font-weight:400;color:#F7F9FA;margin:0 0 20px;line-height:1.3;">${escapeHtml(titulo)}</h1>
     ${barra}
     ${informeHtml}
     ${focosHtml}
     <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:24px;">
-      <tr><td style="background-color:#FAFAF9;border-radius:4px;">
-        <a href="https://wa.me/50688813232?text=${waText}" style="display:inline-block;padding:14px 24px;font-family:Arial,sans-serif;font-weight:bold;font-size:14px;color:#0A0A0B;text-decoration:none;">Conversar sobre mi resultado por WhatsApp →</a>
+      <tr><td style="background-color:#19D9E6;border-radius:4px;">
+        <a href="https://wa.me/50688813232?text=${waText}" style="display:inline-block;padding:14px 24px;font-family:Manrope,Arial,Helvetica,sans-serif;font-weight:bold;font-size:14px;color:#080B0F;text-decoration:none;">Conversar sobre mi resultado por WhatsApp →</a>
       </td></tr>
     </table>
   `);
@@ -304,18 +304,18 @@ function construirEmailInterno({ contacto, informe, porcentaje, zona, titulo, fo
   const informeHtml = renderInformeHtml(informe);
 
   const fila = (etiqueta, valor) =>
-    `<tr><td style="font-family:Arial,sans-serif;font-size:13px;color:#ACACB0;padding:4px 0;"><strong style="color:#FAFAF9;">${etiqueta}:</strong> ${escapeHtml(valor)}</td></tr>`;
+    `<tr><td style="font-family:Manrope,Arial,Helvetica,sans-serif;font-size:13px;color:#8B98A5;padding:4px 0;"><strong style="color:#F7F9FA;">${etiqueta}:</strong> ${escapeHtml(valor)}</td></tr>`;
 
   const respuestasHtml = respuestas.map(r => `
     <tr>
-      <td style="padding:8px 12px;border-top:1px solid #232326;font-family:Arial,sans-serif;font-size:12px;color:#ACACB0;">${escapeHtml(r.categoria)}</td>
-      <td style="padding:8px 12px;border-top:1px solid #232326;font-family:Arial,sans-serif;font-size:12px;color:#d8d8da;">${escapeHtml(r.respuesta)}</td>
-      <td style="padding:8px 12px;border-top:1px solid #232326;font-family:Arial,sans-serif;font-size:12px;color:#FAFAF9;text-align:center;">${escapeHtml(r.puntaje)}/3</td>
+      <td style="padding:8px 12px;border-top:1px solid #28343E;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:12px;color:#8B98A5;">${escapeHtml(r.categoria)}</td>
+      <td style="padding:8px 12px;border-top:1px solid #28343E;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:12px;color:#F7F9FA;">${escapeHtml(r.respuesta)}</td>
+      <td style="padding:8px 12px;border-top:1px solid #28343E;font-family:Manrope,Arial,Helvetica,sans-serif;font-size:12px;color:#F7F9FA;text-align:center;">${escapeHtml(r.puntaje)}/3</td>
     </tr>`).join('');
 
   return emailShell(`
-    <div style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#7C7C80;margin-bottom:8px;">Nuevo lead · Autodiagnóstico</div>
-    <h1 style="font-family:Arial,sans-serif;font-size:22px;color:#FAFAF9;margin:0 0 20px;">${escapeHtml(contacto.nombre)}</h1>
+    <div style="font-family:Manrope,Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8B98A5;margin-bottom:8px;">Nuevo lead · Autodiagnóstico</div>
+    <h1 style="font-family:Manrope,Arial,Helvetica,sans-serif;font-size:24px;font-weight:400;color:#F7F9FA;margin:0 0 20px;">${escapeHtml(contacto.nombre)}</h1>
 
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:20px;">
       ${fila('Empresa', contacto.empresa)}
@@ -330,10 +330,10 @@ function construirEmailInterno({ contacto, informe, porcentaje, zona, titulo, fo
 
     ${barra}
 
-    <div style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#7C7C80;margin:20px 0 10px;">Informe generado (el mismo que recibió el prospecto)</div>
+    <div style="font-family:Manrope,Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8B98A5;margin:20px 0 10px;">Informe generado (el mismo que recibió el prospecto)</div>
     ${informeHtml}
 
-    <div style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#7C7C80;margin:20px 0 10px;">Respuestas completas</div>
+    <div style="font-family:Manrope,Arial,Helvetica,sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#8B98A5;margin:20px 0 10px;">Respuestas completas</div>
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
       ${respuestasHtml}
     </table>
