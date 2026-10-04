@@ -213,11 +213,7 @@ function construirBarraUmbral(porcentaje, puntajeTotal, puntajeMax) {
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
           <tr>
             <td style="width:${izquierda}%;"><div style="height:1px;line-height:1px;font-size:1px;background-color:#8B98A5;">&nbsp;</div></td>
-            <td style="width:12px;">
-              <table role="presentation" cellpadding="0" cellspacing="0" align="center"><tr>
-                <td style="width:9px;height:9px;line-height:9px;font-size:1px;background-color:#19D9E6;border-radius:50%;">&nbsp;</td>
-              </tr></table>
-            </td>
+            <td width="16" align="center" valign="middle" style="width:16px;min-width:16px;padding:0;text-align:center;vertical-align:middle;font-family:Arial,Helvetica,sans-serif;font-size:20px;line-height:24px;mso-line-height-rule:exactly;color:#19D9E6;">&#9679;</td>
             <td style="width:${derecha}%;"><div style="height:1px;line-height:1px;font-size:1px;background-color:#8B98A5;">&nbsp;</div></td>
           </tr>
         </table>
