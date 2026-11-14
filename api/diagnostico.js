@@ -4,6 +4,7 @@
 // uno al prospecto y una copia interna a Warren.
 
 const PERFILES = {
+  'Contratos o servicios recurrentes': 'Revisar las fechas de renovación, los avisos previos y el seguimiento de cada contrato. No confundir ingresos proyectados con pagos recibidos.',
   'Vivo de mi red': 'El negocio genera clientes principalmente por su red: referidos, networking y eventos. Las capacidades de JANUS más relevantes son el seguimiento con fecha y alertas, el escaneo de tarjetas con IA, el formulario QR para eventos, el pipeline y las cotizaciones que se convierten en oportunidades.',
   'Vendo mi tiempo': 'El negocio vende su tiempo: cobra por hora, por sesión o por caso. Las capacidades de JANUS más relevantes son el Tiempo Facturable (registro del tiempo por cliente y por caso, y un reporte mensual en PDF por cliente que respalda cada factura), las cotizaciones y el formulario para que los clientes completen sus datos de facturación.',
   'Tengo un equipo comercial': 'El negocio vende con un equipo comercial. Las capacidades de JANUS más relevantes son JANUS for Teams (un usuario por vendedor con su propia cartera, cuotas, comisiones y análisis por vendedor, con visibilidad completa para quien dirige), el pipeline y la proyección de ingresos.',
@@ -93,10 +94,12 @@ async function generarInforme({ contacto, respuestas, puntajeTotal, puntajeMax, 
 
   const prompt = `Sos un estratega de negocios escribiendo un informe de diagnóstico para ${contacto.empresa}, a partir del autodiagnóstico que completó ${contacto.nombre} (${contacto.puesto}).
 
-Este autodiagnóstico evalúa qué tanto control tiene un negocio sobre su ciclo comercial completo: desde que conoce a un contacto, pasando por el seguimiento, el pipeline y las cotizaciones, hasta el tiempo que le dedica a cada cliente, la forma en que factura y su capacidad de proyectar ingresos y crecer. Quien responde puede ser un profesional independiente (abogado, consultor, contador, coach) o el dueño o gerente de una pyme con equipo comercial.
+Este autodiagnóstico evalúa qué tanto control tiene un negocio sobre su ciclo comercial completo: desde que conoce a un contacto, pasando por el seguimiento, el pipeline y las cotizaciones, hasta la facturación, el cobro y la proyección de ingresos. Las dos últimas preguntas se adaptan al perfil declarado. Quien responde puede ser un profesional independiente (abogado, consultor, contador, coach) o el dueño o gerente de una pyme con equipo comercial.
 
 REGLA CENTRAL DEL INFORME — LEÉ ESTO CON CUIDADO:
 El diagnóstico es sobre EL NEGOCIO y sus procesos, NUNCA sobre los hábitos personales de ${contacto.nombre}. Aunque se trate de un profesional independiente, el sujeto del informe es su operación comercial: su estructura, sus procesos, su nivel de control, su dependencia de la memoria o de personas puntuales. Evitá frases dirigidas a la persona como "usted debería", "le falta disciplina" o "su memoria falla"; en su lugar, hablá de "el negocio", "la operación comercial", "el despacho" o "el equipo", según corresponda. Podés dirigirte a ${primerNombre} directamente para contextualizar (ej. "${primerNombre}, su diagnóstico muestra que la operación comercial..."), pero el diagnóstico describe brechas estructurales, no fallas personales.
+
+INTERPRETACIÓN: Usá solo categorías y hechos evaluados en las respuestas. No supongas cobro por hora, contratos recurrentes, asistencia a eventos o equipo si no se declaró. Separá trabajo sin facturar, facturas pendientes y pagos recibidos; separá ingresos confirmados de oportunidades abiertas. Si hay pocos focos débiles, no inventes otros. Si corresponde mencionar WhatsApp por lote, aclarar que los mensajes se revisan y envían uno a uno. No compares el puntaje con otros negocios sin datos.
 
 DATOS DEL DIAGNÓSTICO:
 - Puntaje: ${puntajeTotal}/${puntajeMax} (${porcentaje}%)
@@ -111,13 +114,13 @@ Escribí el informe en español de Costa Rica, usando "usted" al dirigirte a ${p
 
 PÁRRAFO 1: Abrí dirigiéndote a ${primerNombre} brevemente, pero pasando de inmediato a describir el patrón estructural que revelan las respuestas. Referite a detalles concretos que se dieron (ej. si las cotizaciones quedan en el correo sin seguimiento, o si el tiempo trabajado no siempre se factura), siempre como brechas de la operación, no como descuidos individuales.
 
-PÁRRAFO 2: Explicá el RIESGO REAL de negocio que implica seguir sin estructura. Presentá exactamente TRES riesgos concretos, cada uno en su propia línea, con este formato exacto (numeración seguida de un salto de línea simple entre cada uno, todos dentro de este mismo párrafo):
+PÁRRAFO 2: Explicá el RIESGO REAL de negocio que implica seguir sin estructura. Presentá hasta tres riesgos sustentados por las respuestas; si no hay riesgos claros, describí prácticas que conviene sostener. Para los riesgos que sí identifiques, presentalos, cada uno en su propia línea, con este formato exacto (numeración seguida de un salto de línea simple entre cada uno, todos dentro de este mismo párrafo):
 1. [primer riesgo, con ejemplo concreto basado en las respuestas]
 2. [segundo riesgo, con ejemplo concreto basado en las respuestas]
 3. [tercer riesgo, con ejemplo concreto basado en las respuestas]
 Los riesgos deben ser específicos y, cuando sea posible, medibles (tiempo, frecuencia, ingreso que se deja de cobrar), pero sin inventar cifras que las respuestas no permitan sostener y sin alarmismo.
 
-PÁRRAFO 3: Priorizá las 2-3 áreas más débiles (${focos.join(', ') || 'las respuestas más bajas'}) y explicá qué consecuencia concreta tiene cada una para el negocio si no se soluciona en los próximos meses. Usá el MISMO formato numerado que el párrafo 2 — cada área en su propia línea (nunca "Primero/Segundo/Tercero" en prosa):
+PÁRRAFO 3: Priorizá solo los focos identificados (si no hay, sugerí cómo sostener las prácticas actuales) (${focos.join(', ') || 'sin focos débiles'}) y explicá qué consecuencia concreta tiene cada una para el negocio si no se soluciona en los próximos meses. Usá el MISMO formato numerado que el párrafo 2 — cada área en su propia línea (nunca "Primero/Segundo/Tercero" en prosa):
 1. [primera área más débil + consecuencia concreta]
 2. [segunda área más débil + consecuencia concreta]
 3. [tercera área más débil + consecuencia concreta, si aplica]

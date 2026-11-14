@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Autodiagnóstico JANUS — ¿Qué tanto control tenés sobre tu negocio comercial?</title>
-<meta name="description" content="En 3 minutos, descubrí qué tanto control tenés sobre tu negocio comercial — del primer contacto a la factura — y recibí un diagnóstico individualizado con IA en tu correo.">
+<meta name="description" content="En 3 minutos, descubrí qué tanto control tenés sobre tu negocio comercial — del primer contacto al cobro — y recibí un diagnóstico individualizado con IA en tu correo.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#080B0F">
 <link rel="canonical" href="https://diagnostico.janus.money/">
@@ -183,7 +183,7 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
     <div class="eyebrow"><span class="dot"></span> Autodiagnóstico JANUS</div>
     <div class="intro">
       <h1>Descubrí qué tan cerca estás de <em>perder el control</em> de tu negocio.</h1>
-      <p>Respondé 9 preguntas breves sobre cómo gestionás hoy cada relación comercial — del primer contacto a la factura. Vas a recibir un análisis individualizado, generado con IA a partir de tus respuestas — directo a tu correo.</p>
+      <p>Respondé 9 preguntas breves sobre cómo gestionás hoy cada relación comercial — del primer contacto al cobro. Vas a recibir un análisis individualizado, generado con IA a partir de tus respuestas — directo a tu correo.</p>
       <p class="meta-line">3 minutos · Análisis individualizado por correo · Sin compromiso</p>
       <ul class="intro-list">
         <li><span class="n">01</span> Respondé con tu situación real, no con la ideal.</li>
@@ -301,110 +301,44 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
         {t:"Vivo de mi red: consigo clientes por referidos, networking y eventos", p:"red"},
         {t:"Vendo mi tiempo: cobro por hora, por sesión o por caso", p:"tiempo"},
         {t:"Tengo un equipo comercial que vende conmigo", p:"equipo"},
-        {t:"Una combinación de las anteriores", p:"combinado"}
+        {t:"Una combinación de las anteriores", p:"combinado"},
+        {t:"Principalmente por contratos o servicios que se renuevan", p:"recurrencia"}
       ]
     },
-    {
-      cat: "Contactos",
-      q: "¿Qué tan fácil es hoy encontrar la información de un contacto que conociste hace tres meses?",
-      opts: [
-        {t:"Tendría que buscar entre tarjetas, WhatsApp y notas sueltas", s:0},
-        {t:"Lo tengo en una lista o Excel que actualizo cuando puedo", s:1},
-        {t:"Lo tengo centralizado, pero me toma tiempo revisarlo", s:2},
-        {t:"Lo encuentro al instante, con todo el contexto", s:3}
-      ]
-    },
-    {
-      cat: "Seguimiento",
-      q: "¿Qué tan seguido se te enfría una oportunidad por falta de seguimiento a tiempo?",
-      opts: [
-        {t:"Constantemente — pierdo la cuenta de a quién le debo escribir", s:0},
-        {t:"A veces, cuando ando muy ocupado", s:1},
-        {t:"Rara vez, trato de estar encima", s:2},
-        {t:"Nunca — tengo un sistema que me avisa antes", s:3}
-      ]
-    },
-    {
-      cat: "Pipeline",
-      q: "¿Qué tan claro tenés en qué etapa está cada oportunidad activa ahora mismo?",
-      opts: [
-        {t:"No llevo un registro de etapas", s:0},
-        {t:"Lo tengo en la cabeza, sin escribirlo en ningún lado", s:1},
-        {t:"Lo anoto, pero no siempre está actualizado", s:2},
-        {t:"Tengo visibilidad completa y actualizada", s:3}
-      ]
-    },
-    {
-      cat: "Cotizaciones",
-      q: "Cuando enviás una cotización, ¿qué pasa después?",
-      opts: [
-        {t:"Queda en mi correo y a veces se me olvida darle seguimiento", s:0},
-        {t:"La reviso cuando me acuerdo", s:1},
-        {t:"Llevo un control, pero en un archivo aparte", s:2},
-        {t:"Se convierte en una oportunidad con fecha de seguimiento", s:3}
-      ]
-    },
-    {
-      cat: "Tiempo sin cobrar",
-      q: "¿Qué tan seguido trabajás para un cliente algo que nunca llega a cobrarse — una llamada que se alargó, una consulta por WhatsApp, un ajuste extra?",
-      opts: [
-        {t:"Todo el tiempo — no llevo control de eso", s:0},
-        {t:"Con frecuencia, pero no sé cuánto suma", s:1},
-        {t:"A veces, y lo tengo más o menos medido", s:2},
-        {t:"Casi nunca — registro todo lo que trabajo", s:3}
-      ]
-    },
-    {
-      cat: "Transparencia al facturar",
-      q: "Cuando facturás, ¿tu cliente sabe exactamente qué le estás cobrando?",
-      opts: [
-        {t:"Solo ve un monto total", s:0},
-        {t:"Le doy una descripción general", s:1},
-        {t:"Le envío un detalle, pero me toma tiempo armarlo", s:2},
-        {t:"Recibe un reporte detallado que respalda cada cobro", s:3}
-      ]
-    },
-    {
-      cat: "Proyección de ingresos",
-      q: "¿Podés decir con certeza cuánto vas a facturar el próximo trimestre?",
-      opts: [
-        {t:"No tengo idea, es pura intuición", s:0},
-        {t:"Tengo una idea general, nada preciso", s:1},
-        {t:"Puedo estimarlo con algo de esfuerzo", s:2},
-        {t:"Sí, con una cifra real y actualizada", s:3}
-      ]
-    },
-    {
-      cat: "Crecimiento",
-      q: "Si mañana tu negocio creciera al doble, ¿tu forma actual de trabajar lo soportaría?",
-      opts: [
-        {t:"No — ya hoy estoy al límite", s:0},
-        {t:"Con mucho esfuerzo y desorden", s:1},
-        {t:"Bastante bien, con algunos ajustes", s:2},
-        {t:"Sí, tengo un sistema que crece conmigo", s:3}
-      ]
-    }
+    {"cat": "Contactos", "q": "Cuando conocés a un posible cliente, ¿cómo guardás sus datos y el contexto para retomar la conversación?", "opts": [{"t": "Quedan repartidos entre chats, tarjetas y notas.", "s": 0}, {"t": "Guardo algunos datos, pero casi nunca el contexto.", "s": 1}, {"t": "Centralizo los datos; el contexto no siempre queda anotado.", "s": 2}, {"t": "Registro datos, origen y contexto en un lugar que puedo consultar.", "s": 3}]},
+    {"cat": "Seguimiento", "q": "¿Cómo sabés a quién contactar hoy y qué se habló la última vez?", "opts": [{"t": "Dependo de acordarme o revisar chats.", "s": 0}, {"t": "Tengo recordatorios sueltos y busco el historial por aparte.", "s": 1}, {"t": "Tengo fechas o historial, pero no siempre están al día.", "s": 2}, {"t": "Consulto la próxima acción, su fecha y el historial en el mismo lugar.", "s": 3}]},
+    {"cat": "Oportunidades", "q": "¿Cómo sabés en qué etapa está cada oportunidad y qué falta para avanzar?", "opts": [{"t": "No registro las etapas ni los pasos siguientes.", "s": 0}, {"t": "Sé cómo van algunas, pero lo manejo de memoria.", "s": 1}, {"t": "Registro las etapas, aunque no siempre el próximo paso o el criterio para avanzar.", "s": 2}, {"t": "Veo la etapa y sé qué falta para avanzar en cada oportunidad activa.", "s": 3}]},
+    {"cat": "Propuestas comerciales", "q": "Después de presentar una propuesta o un precio, ¿cómo sabés qué pasó y cuándo retomarlo?", "opts": [{"t": "No llevo un control después de comunicarlo.", "s": 0}, {"t": "Lo reviso cuando me acuerdo o cuando el cliente escribe.", "s": 1}, {"t": "Registro lo enviado, pero no siempre el estado o cuándo retomarlo.", "s": 2}, {"t": "Registro el estado y dejo programada la próxima acción si sigue pendiente.", "s": 3}]},
+    {"cat": "Facturación y cobros", "q": "¿Podés distinguir qué falta facturar, qué está pendiente de cobro y qué ya cobraste?", "opts": [{"t": "No tengo una vista clara de esos tres estados.", "s": 0}, {"t": "Lo reconstruyo revisando facturas, mensajes o movimientos bancarios.", "s": 1}, {"t": "Tengo un registro, pero se actualiza con retraso o no distingue todos los estados.", "s": 2}, {"t": "Veo los tres estados al día, incluidos los pagos parciales cuando aplican.", "s": 3}]},
+    {"cat": "Proyección de ingresos", "q": "Al proyectar el próximo trimestre, ¿cómo separás los ingresos confirmados de los que todavía no cerraron?", "opts": [{"t": "No hago esa separación.", "s": 0}, {"t": "Los distingo de memoria o con una estimación general.", "s": 1}, {"t": "Los separo en un registro que no siempre está actualizado.", "s": 2}, {"t": "Consulto una proyección actualizada con lo confirmado separado de lo que falta cerrar.", "s": 3}]},
+    {"cat": "Pendientes y vencimientos", "q": "¿Cómo detectás compromisos comerciales antes de que venzan?", "opts": [{"t": "Normalmente me entero cuando ya vencieron.", "s": 0}, {"t": "Los reviso de memoria o en varias herramientas.", "s": 1}, {"t": "Tengo fechas, pero no reviso todos los compromisos a tiempo.", "s": 2}, {"t": "Tengo fechas y una revisión o avisos que me permiten actuar antes.", "s": 3}]},
+    {"cat": "Continuidad comercial", "q": "Si no podés atender un seguimiento, ¿cómo recuperás el contexto y lo retomás?", "opts": [{"t": "Tengo que reconstruirlo desde cero.", "s": 0}, {"t": "Busco en chats y notas para recordar qué quedó pendiente.", "s": 1}, {"t": "Hay un registro, pero no siempre dice qué hacer o cuándo.", "s": 2}, {"t": "El historial y el próximo paso con fecha me permiten retomarlo.", "s": 3}]}
   ];
 
   var FOCUS_SUGGESTIONS = {
-    "Contactos": "Centralizar tus contactos en un solo lugar, con escaneo de tarjetas por IA y formulario QR para eventos.",
-    "Seguimiento": "Que cada contacto y oportunidad tenga una próxima acción con fecha — y que el sistema te avise antes de que se enfríe.",
-    "Pipeline": "Ver en un tablero en qué etapa está cada oportunidad, y cuánto tiempo lleva ahí.",
-    "Cotizaciones": "Que cada cotización enviada se convierta automáticamente en una oportunidad con seguimiento.",
-    "Tiempo sin cobrar": "Registrar el tiempo por cliente y por caso, para que cada minuto trabajado llegue a la factura.",
-    "Transparencia al facturar": "Respaldar cada factura con un reporte que detalle el trabajo realizado.",
-    "Proyección de ingresos": "Ver tu facturación proyectada a doce meses, separando lo puntual de lo recurrente.",
-    "Crecimiento": "Una estructura que crezca con tu negocio: usuarios, carteras y métricas por persona."
+    "Contactos": "Guardar datos, origen y contexto desde el primer encuentro.",
+    "Seguimiento": "Reunir próxima acción, fecha e historial para saber a quién escribir.",
+    "Oportunidades": "Definir etapas y criterios claros para saber qué falta antes de avanzar.",
+    "Propuestas comerciales": "Registrar el estado de cada propuesta y programar cuándo retomarla.",
+    "Facturación y cobros": "Separar lo pendiente de facturar, lo pendiente de cobrar y los pagos recibidos.",
+    "Proyección de ingresos": "Separar lo confirmado de las oportunidades abiertas al proyectar.",
+    "Seguimiento después de eventos": "Priorizar contactos del evento y agendar su próxima conversación.",
+    "Tiempo sin cobrar": "Registrar el trabajo facturable por cliente y contrastarlo con lo incluido en la factura.",
+    "Pendientes y vencimientos": "Asignar fechas y revisar compromisos antes de que venzan.",
+    "Responsables del equipo": "Dejar visible quién responde por cada seguimiento y cuál es su próximo paso.",
+    "Continuidad comercial": "Documentar el historial y el próximo paso para retomar un seguimiento sin reconstruirlo.",
+    "Renovación de contratos": "Registrar fechas de renovación y preparar el seguimiento con anticipación."
   };
 
   var PERFIL_TEXTO = {
-    red: "Por cómo describiste tu negocio, tu mayor palanca está en el seguimiento: que ninguna relación se enfríe entre el primer café y la cotización.",
-    tiempo: "Por cómo describiste tu negocio, tu mayor palanca está en el tiempo: que cada minuto que trabajás para un cliente llegue a la factura, con un reporte que lo respalde.",
-    equipo: "Por cómo describiste tu negocio, tu mayor palanca está en la estructura: que cada vendedor tenga su cartera y vos tengas visibilidad de todo el equipo.",
-    combinado: "Por cómo describiste tu negocio, necesitás el ciclo completo: del primer contacto a la factura, en un solo sistema."
+    red: "Por cómo describiste tu negocio, vale la pena revisar el seguimiento: que ninguna relación se enfríe entre el primer café y la cotización.",
+    tiempo: "Por cómo describiste tu negocio, vale la pena revisar el tiempo: que cada minuto que trabajás para un cliente llegue a la factura, con un reporte que lo respalde.",
+    equipo: "Por cómo describiste tu negocio, vale la pena revisar la estructura: que cada vendedor tenga su cartera y vos tengas visibilidad de todo el equipo.",
+    recurrencia: "Si tu negocio depende de renovaciones, conviene revisar fechas, avisos y próximos pasos.",
+    combinado: "Por cómo describiste tu negocio, necesitás el ciclo completo: del primer contacto al cobro, en un solo sistema."
   };
 
-  var PERFIL_NOMBRE = { red: "Vivo de mi red", tiempo: "Vendo mi tiempo", equipo: "Tengo un equipo comercial", combinado: "Una combinación" };
+  var PERFIL_NOMBRE = { red: "Vivo de mi red", tiempo: "Vendo mi tiempo", equipo: "Tengo un equipo comercial", combinado: "Una combinación", recurrencia: "Contratos o servicios recurrentes" };
 
   var answers = new Array(QUESTIONS.length).fill(null);
   var currentQ = 0;
@@ -431,8 +365,15 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
     showScreen(screenQuestion);
   });
 
+  var VARIANTES = {"red": [{"cat": "Seguimiento después de eventos", "q": "Después de una reunión de networking o un evento, ¿cómo retomás los contactos que valen un seguimiento?", "opts": [{"t": "No hago un seguimiento organizado.", "s": 0}, {"t": "Escribo a algunos cuando me acuerdo.", "s": 1}, {"t": "Registro quién me interesa, pero no siempre defino cuándo escribir.", "s": 2}, {"t": "Priorizo los contactos y dejo una acción con fecha e historial.", "s": 3}]}, {"cat": "Pendientes y vencimientos", "q": "¿Cómo detectás compromisos comerciales antes de que venzan?", "opts": [{"t": "Normalmente me entero cuando ya vencieron.", "s": 0}, {"t": "Los reviso de memoria o en varias herramientas.", "s": 1}, {"t": "Tengo fechas, pero no reviso todos los compromisos a tiempo.", "s": 2}, {"t": "Tengo fechas y una revisión o avisos que me permiten actuar antes.", "s": 3}]}], "tiempo": [{"cat": "Tiempo sin cobrar", "q": "¿Cómo detectás el trabajo facturable que todavía no se incluyó en una factura?", "opts": [{"t": "No llevo un registro para detectarlo.", "s": 0}, {"t": "Lo reconstruyo al facturar con mensajes, agenda o memoria.", "s": 1}, {"t": "Registro parte del trabajo, pero no siempre lo concilio con la factura.", "s": 2}, {"t": "Registro el trabajo facturable y reviso qué quedó sin incluir.", "s": 3}]}, {"cat": "Pendientes y vencimientos", "q": "¿Cómo detectás compromisos comerciales antes de que venzan?", "opts": [{"t": "Normalmente me entero cuando ya vencieron.", "s": 0}, {"t": "Los reviso de memoria o en varias herramientas.", "s": 1}, {"t": "Tengo fechas, pero no reviso todos los compromisos a tiempo.", "s": 2}, {"t": "Tengo fechas y una revisión o avisos que me permiten actuar antes.", "s": 3}]}], "equipo": [{"cat": "Responsables del equipo", "q": "¿Cómo sabés quién debe actuar sobre cada contacto u oportunidad pendiente?", "opts": [{"t": "La responsabilidad suele quedar implícita.", "s": 0}, {"t": "Pregunto al equipo para saber quién lo lleva.", "s": 1}, {"t": "Hay responsables asignados, pero no siempre se ven sus pendientes.", "s": 2}, {"t": "Puedo ver responsables, próximos pasos y fechas en un registro compartido.", "s": 3}]}, {"cat": "Continuidad comercial", "q": "Si no podés atender un seguimiento, ¿cómo recuperás el contexto y lo retomás?", "opts": [{"t": "Tengo que reconstruirlo desde cero.", "s": 0}, {"t": "Busco en chats y notas para recordar qué quedó pendiente.", "s": 1}, {"t": "Hay un registro, pero no siempre dice qué hacer o cuándo.", "s": 2}, {"t": "El historial y el próximo paso con fecha me permiten retomarlo.", "s": 3}]}], "combinado": [{"cat": "Pendientes y vencimientos", "q": "¿Cómo detectás compromisos comerciales antes de que venzan?", "opts": [{"t": "Normalmente me entero cuando ya vencieron.", "s": 0}, {"t": "Los reviso de memoria o en varias herramientas.", "s": 1}, {"t": "Tengo fechas, pero no reviso todos los compromisos a tiempo.", "s": 2}, {"t": "Tengo fechas y una revisión o avisos que me permiten actuar antes.", "s": 3}]}, {"cat": "Continuidad comercial", "q": "Si no podés atender un seguimiento, ¿cómo recuperás el contexto y lo retomás?", "opts": [{"t": "Tengo que reconstruirlo desde cero.", "s": 0}, {"t": "Busco en chats y notas para recordar qué quedó pendiente.", "s": 1}, {"t": "Hay un registro, pero no siempre dice qué hacer o cuándo.", "s": 2}, {"t": "El historial y el próximo paso con fecha me permiten retomarlo.", "s": 3}]}], "recurrencia": [{"cat": "Renovación de contratos", "q": "¿Cómo sabés qué contratos se acercan a su renovación y quién debe actuar?", "opts": [{"t": "Generalmente me entero cuando vence o el cliente escribe.", "s": 0}, {"t": "Reviso los contratos cuando me acuerdo.", "s": 1}, {"t": "Registro fechas, pero no siempre programo una acción previa.", "s": 2}, {"t": "Registro fechas, preparo el seguimiento y dejo constancia de la decisión.", "s": 3}]}, {"cat": "Pendientes y vencimientos", "q": "¿Cómo detectás compromisos comerciales antes de que venzan?", "opts": [{"t": "Normalmente me entero cuando ya vencieron.", "s": 0}, {"t": "Los reviso de memoria o en varias herramientas.", "s": 1}, {"t": "Tengo fechas, pero no reviso todos los compromisos a tiempo.", "s": 2}, {"t": "Tengo fechas y una revisión o avisos que me permiten actuar antes.", "s": 3}]}]};
+
+  function preguntaActiva(i){
+    var perfil = answers[0] === null ? "combinado" : QUESTIONS[0].opts[answers[0]].p;
+    return i >= 7 ? VARIANTES[perfil][i-7] : QUESTIONS[i];
+  }
+
   function renderQuestion(){
-    var q = QUESTIONS[currentQ];
+    var q = preguntaActiva(currentQ);
     document.getElementById('qCat').textContent = q.cat;
     document.getElementById('qTitle').textContent = q.q;
     progressFill.style.width = ((currentQ) / QUESTIONS.length * 100) + '%';
@@ -447,8 +388,12 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
       btn.textContent = opt.t;
       if(answers[currentQ] === i) btn.classList.add('selected');
       btn.addEventListener('click', function(){
+        if(currentQ === 0 && answers[0] !== i){ answers[7] = null; answers[8] = null; }
         answers[currentQ] = i;
+        Array.prototype.forEach.call(wrap.querySelectorAll("button"), function(button){ button.disabled = true; });
+        var preguntaRespondida = currentQ;
         setTimeout(function(){
+          if(currentQ !== preguntaRespondida) return;
           if(currentQ < QUESTIONS.length - 1){
             currentQ++;
             renderQuestion();
@@ -508,17 +453,18 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
     var respuestas = [];
     var perfil = null;
     answers.forEach(function(a, i){
-      if(QUESTIONS[i].perfil){
-        perfil = a === null ? null : QUESTIONS[i].opts[a].p;
+      var pregunta = preguntaActiva(i);
+      if(pregunta.perfil){
+        perfil = a === null ? null : pregunta.opts[a].p;
         return;
       }
-      var s = a === null ? 0 : QUESTIONS[i].opts[a].s;
+      var s = a === null ? 0 : pregunta.opts[a].s;
       totalScore += s;
-      catScores.push({cat: QUESTIONS[i].cat, score: s});
+      catScores.push({cat: pregunta.cat, score: s});
       respuestas.push({
-        categoria: QUESTIONS[i].cat,
-        pregunta: QUESTIONS[i].q,
-        respuesta: a === null ? '(sin responder)' : QUESTIONS[i].opts[a].t,
+        categoria: pregunta.cat,
+        pregunta: pregunta.q,
+        respuesta: a === null ? '(sin responder)' : pregunta.opts[a].t,
         puntaje: s
       });
     });
@@ -537,7 +483,7 @@ footer.note a{color:var(--gris-700);text-decoration:underline;}
       paragraph = 'Hay partes de tu proceso comercial que ya están razonablemente bajo control, y otras que todavía dependen de que te acordés. Si tu negocio sigue creciendo al ritmo actual, esos puntos ciegos se vuelven más caros de resolver.';
     } else {
       zone = 'control'; zoneLabel = 'Zona: Con control';
-      title = 'Tenés un nivel de control comercial superior al de la mayoría de los negocios de tu tamaño.';
+      title = 'Tus respuestas muestran un buen nivel de control comercial.';
       paragraph = 'El siguiente paso ya no es urgente — es estratégico: sostener ese orden para que tu negocio pueda crecer sin que el seguimiento se vuelva un cuello de botella.';
     }
 
