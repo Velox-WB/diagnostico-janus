@@ -49,7 +49,7 @@ module.exports = async function handler(req, res) {
     const htmlInterno = construirEmailInterno(datos);
 
     // 3. Enviar ambos correos vía Resend
-    const fromEmail = process.env.FROM_EMAIL || 'JANUS <diagnostico@janus.money>';
+    const fromEmail = 'JANUS <diagnostico@janus.money>';
     const notifyEmail = process.env.NOTIFY_EMAIL || 'info@warrenbenavides.com';
 
     await Promise.all([
@@ -356,7 +356,7 @@ async function enviarCorreo({ to, from, subject, html }) {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${process.env.RESEND_API_KEY}`
     },
-    body: JSON.stringify({ from, to, subject, html })
+    body: JSON.stringify({ from, to, subject, html, reply_to: 'info@warrenbenavides.com' })
   });
 
   if (!response.ok) {
