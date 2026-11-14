@@ -1,4 +1,4 @@
-import { registrarDiagnostico } from '../lib/registro-sheets.mjs';
+const { registrarDiagnostico } = require('../lib/registro-sheets.cjs');
 
 // api/diagnostico.js
 // Función serverless (Vercel) que recibe las respuestas del autodiagnóstico de JANUS,
@@ -21,7 +21,7 @@ function escapeHtml(texto) {
     .replace(/"/g, '&quot;');
 }
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
