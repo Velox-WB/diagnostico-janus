@@ -1,3 +1,5 @@
+import { registrarDiagnostico } from '../lib/registro-sheets.mjs';
+
 // api/diagnostico.js
 // Función serverless (Vercel) que recibe las respuestas del autodiagnóstico de JANUS,
 // genera un informe individualizado con Claude y envía dos correos vía Resend:
@@ -24,6 +26,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  let registro;
   try {
     const { contacto, respuestas, puntajeTotal, puntajeMax, porcentaje, zona } = req.body;
     const focos = Array.isArray(req.body.focos) ? req.body.focos : [];
@@ -34,6 +37,8 @@ export default async function handler(req, res) {
     if (!contacto || !contacto.correo || !contacto.nombre || !Array.isArray(respuestas)) {
       return res.status(400).json({ error: 'Faltan datos de contacto requeridos.' });
     }
+
+    registro = registrarDiagnostico({contacto, perfil, puntajeTotal, puntajeMax, porcentaje, zona, focos, respuestas});
 
     // 1. Generar el informe individualizado con Claude
     const informe = await generarInforme({ contacto, respuestas, puntajeTotal, puntajeMax, porcentaje, zona, focos, perfil });
@@ -62,9 +67,11 @@ export default async function handler(req, res) {
       })
     ]);
 
+    await registro;
     return res.status(200).json({ ok: true });
 
   } catch (err) {
+    await registro;
     console.error('Error en /api/diagnostico:', err);
     return res.status(500).json({ error: 'Error interno generando o enviando el diagnóstico.' });
   }
